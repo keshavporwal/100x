@@ -1,0 +1,587 @@
+<!DOCTYPE html><html class="h-full" lang="en" style="width: 1280px; height: 1024px; overflow: hidden; position: relative;"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>MediBridge - Universal Authentication &amp; Email Registration</title>
+<!-- Tailwind CSS CDN with forms and container queries plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration matching design theme -->
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          primary: '#004ac6',
+          'primary-container': '#2563eb',
+          'on-primary': '#ffffff',
+          'on-primary-container': '#eeefff',
+          surface: '#f8f9ff',
+          'surface-container': '#e5eeff',
+          'surface-container-low': '#eff4ff',
+          'surface-container-high': '#dce9ff',
+          'surface-container-lowest': '#ffffff',
+          'on-surface': '#0b1c30',
+          'on-surface-variant': '#434655',
+          outline: '#737686',
+          'outline-variant': '#c3c6d7',
+          brand: {
+            50: '#eff6ff',
+            100: '#dbeafe',
+            200: '#bfdbfe',
+            500: '#3b82f6',
+            600: '#004ac6',
+            700: '#003ea8',
+            800: '#002f82',
+            900: '#001e54',
+          }
+        },
+        fontFamily: {
+          sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        },
+        boxShadow: {
+          'card-subtle': '0 20px 40px -15px rgba(15, 23, 42, 0.05), 0 0 1px 1px rgba(226, 232, 240, 0.8)',
+          'floating-btn': '0 4px 14px 0 rgba(0, 74, 198, 0.35)',
+        }
+      }
+    }
+  }
+</script>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style data-purpose="custom-enhancements">
+    body {
+      background: radial-gradient(circle at 50% 0%, #edf2ff 0%, #f8fafc 65%, #f1f5f9 100%);
+      font-family: 'Inter', sans-serif;
+    }
+    .role-bg-image {
+      transition: opacity 0.5s ease-in-out;
+    }
+    .role-content-transition {
+      transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    }
+    /* Sleek custom hidden scrollbar for right pane */
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 5px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #c3c6d7;
+      border-radius: 9999px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #737686;
+    }
+  </style>
+</head>
+<body class="h-screen w-full overflow-hidden text-slate-900 flex antialiased selection:bg-primary selection:text-white m-0 p-0">
+<!-- DUAL-PANE AUTHENTICATION CONTAINER: Full bleed 100vh -->
+<div class="w-full h-full min-h-screen flex flex-col lg:flex-row overflow-hidden">
+<!-- LEFT COLUMN: High-End Clinical Visual Panel (50% / flex-1, full height) -->
+<div class="relative lg:w-1/2 lg:flex-1 hidden lg:flex flex-col justify-between p-12 overflow-hidden bg-slate-950 text-white h-full shrink-0 select-none">
+<!-- Layered Background Images with Smooth Cross-Fade -->
+<div class="absolute inset-0 w-full h-full overflow-hidden" id="visual-images-container"><img alt="Clinical Healthcare Operations" class="role-bg-image absolute inset-0 w-full h-full object-cover object-center opacity-85" id="bg-img-doctor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqminEeikcxROSyZGWb_TrREJNRILTx3VCCQbehvIioVwNzHTKF30mTEnOAUVYwOHVzWEnPQOkUMyflsQZBQt_hXUI-0LJW5NhrJpYLkw6kn1iV5NRuDN3dgkia6ONck7bFFcvUrZHh4Kvgix0QS7p1zIF0XdORCFBciHfg28kzARwwsNkFrylPw97YfCTxuyva7d6EYw9qTCeJWdNCgiy89b5QoDh1ms7feE0MFEwbSNUV9cRNkg3iw"><img alt="Patient health lounge" class="role-bg-image absolute inset-0 w-full h-full object-cover object-center opacity-0 pointer-events-none" id="bg-img-patient" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkF0Sd9tauEasZ_iM_VOdMisgTHr9QUPoE-im9YmqqfLXniftZxowqNIcZM_DnW0EAehJrVbva3i27fvITMC7Dnuxe4hkoP67GOFv4ebrlFuMVEdQiWI-w8qn9OrHN_cL_YwATkqudCxi42E5FNe1se8kbt8MrVv4xQc-ggyNuaOC9C1z-gns1hF_IxRQtkfmuK3J5jg0Le8tfAN5AjrfXwUu_SIfPkGqdOlLLO9jOiRfv8HUvvDgMfQ"><img alt="Clinic reception and triage" class="role-bg-image absolute inset-0 w-full h-full object-cover object-center opacity-0 pointer-events-none" id="bg-img-desk" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIQTiyX0quRnWxeDpZqAFcSimvpAuDhsSR73RPFOZopZHtp7a8fm38r5wKBF8FeHGFqf7ladGOufw8CmPC-acQWcCZpXHVJ38gFLQcQA3POgs5BZ51czuantH19l6WHQj1S3GTXtf1SEho1d83bC3MP0K_-auc8NVVgbJBph7m0O8nJAW3W92u3CJWenr8okcICe9piQv5I-829CKIVwIl3N_StePxaTnCx81aBo50MqBZW4rhXth00A"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/40 to-slate-900/60 pointer-events-none"></div>
+<!-- Visual Panel Content (Top) -->
+<div class="relative z-10">
+<div class="flex items-center space-x-3">
+<div class="h-10 w-10 bg-primary rounded-xl flex items-center justify-center text-white shadow-lg shadow-blue-900/40 ring-2 ring-blue-400/30">
+<svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3zm1 14h-2v-4H7V10h4V6h2v4h4v2h-4v4z"></path>
+</svg>
+</div>
+<div class="flex flex-col">
+<span class="font-bold text-xl tracking-tight text-white flex items-center gap-1.5">
+    MediBridge
+    <span class="text-[10px] uppercase font-semibold tracking-wider px-1.5 py-0.5 rounded bg-blue-500/20 text-blue-200 border border-blue-400/20">Unified Care</span>
+</span>
+</div>
+</div>
+</div>
+<!-- Visual Panel Content (Bottom Quote & Dynamic Copy) -->
+<div class="relative z-10 space-y-6 pt-16 role-content-transition max-w-xl" id="visual-text-container" style="opacity: 1; transform: translateY(0px);">
+<div class="space-y-3">
+<div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-blue-500/20 text-blue-200 border border-blue-400/30 text-xs font-medium backdrop-blur-md">
+<span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+<span id="visual-badge-text" class="">Clinician Workspace</span>
+</div>
+<h2 class="text-3xl lg:text-[34px] font-bold tracking-tight text-white leading-snug" id="visual-headline">Synchronized care for physicians, care teams, and patients.</h2>
+<p class="text-sm text-slate-300 font-normal leading-relaxed" id="visual-subtitle">Seamless coordination at clinical scale, secured with hardware-level encryption and real-time FHIR synchronization.</p>
+</div>
+<div class="flex items-center gap-4 pt-2 border-t border-white/10 text-xs text-slate-400">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm text-emerald-400">verified_user</span>
+<span class="">SOC-2 &amp; HIPAA Certified</span>
+</div>
+<div class="h-3 w-px bg-slate-700"></div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm text-blue-400">lock</span>
+<span class="">256-Bit Hardware Encryption</span>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT COLUMN: Clean, Focused Auth Container with Custom Hidden Scrollbar -->
+<div class="lg:w-1/2 lg:flex-1 h-full overflow-y-auto custom-scrollbar p-6 sm:p-10 lg:p-14 flex flex-col justify-between bg-surface-container-lowest">
+<div class="max-w-md w-full mx-auto my-auto py-4">
+<!-- Mode Top Tabs: Sign In vs Create Account (Hidden when in dedicated Admin Mode) -->
+<div class="flex items-center justify-between mb-6 pb-3 border-b border-slate-200/80" id="standard-mode-tabs">
+<div class="flex items-center space-x-1 p-1 bg-surface-container-low rounded-xl border border-outline-variant/40">
+<button class="px-4 py-1.5 text-xs font-medium text-slate-600 hover:text-slate-900 rounded-lg transition-all" id="tab-btn-signin" type="button">
+  Sign In
+</button>
+<button class="px-4 py-1.5 text-xs font-semibold text-primary bg-white shadow-sm rounded-lg border border-slate-200/60 transition-all" id="tab-btn-register" type="button">
+  Create Account
+</button>
+</div>
+<span class="text-[11px] text-slate-400 font-medium hidden sm:inline-flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Clinical SSO Active
+</span>
+</div>
+<!-- Dynamic Role Selector: Only Patient, Doctor, Receptionist/Desk (Admin strictly removed) -->
+<div class="mb-6" id="role-selector-container">
+<div class="flex items-center justify-between mb-2">
+<label class="block text-xs font-semibold uppercase tracking-wider text-slate-500" id="role-selector-label">Operational Role</label>
+<span class="text-[11px] text-primary font-semibold px-2 py-0.5 rounded-full bg-surface-container" id="current-role-badge">Clinician Workspace</span>
+</div>
+<div class="grid grid-cols-3 gap-1.5 p-1 bg-slate-100/90 rounded-xl border border-slate-200/70" id="role-selector" role="tablist">
+<button class="role-btn py-2 text-xs font-medium text-slate-600 rounded-lg hover:text-slate-900 focus:outline-none transition-all flex flex-col items-center gap-1" data-role="patient" type="button">
+<svg class="w-4 h-4 opacity-75" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="">Patient</span>
+</button>
+<button class="role-btn py-2 text-xs font-semibold text-primary bg-white shadow-sm rounded-lg border border-slate-200/60 focus:outline-none transition-all flex flex-col items-center gap-1" data-role="doctor" type="button">
+<svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="">Doctor</span>
+</button>
+<button class="role-btn py-2 text-xs font-medium text-slate-600 rounded-lg hover:text-slate-900 focus:outline-none transition-all flex flex-col items-center gap-1" data-role="desk" type="button">
+<svg class="w-4 h-4 opacity-75" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="">Desk</span>
+</button>
+</div>
+</div>
+<!-- ============================================== -->
+<!-- 1. STANDARD SIGN IN VIEW                      -->
+<!-- ============================================== -->
+<div class="space-y-6 transition-all duration-300 hidden" id="view-signin">
+<div>
+<h1 class="text-2xl font-bold tracking-tight text-slate-900" id="signin-heading">Welcome Back</h1>
+<p class="text-xs sm:text-sm text-slate-500 mt-1" id="signin-subheading">Sign in to your synchronized medical workspace.</p>
+</div>
+<!-- Sign-in Form Inputs -->
+<form action="#" class="space-y-4" method="POST" onsubmit="return false;">
+<div>
+<label class="block text-xs font-semibold text-slate-700 mb-1" for="signin-email" id="signin-email-label">Institutional Clinical Email</label>
+<div class="relative">
+<span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.206" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</span>
+<input class="w-full pl-10 pr-3.5 py-2.5 bg-slate-50/70 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition" id="signin-email" name="signin-email" placeholder="dr.chen@stjude-health.org" required="" type="email" value="patient.email@example.com">
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-1">
+<label class="block text-xs font-semibold text-slate-700" for="signin-password">Password</label>
+</div>
+<div class="relative">
+<span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</span>
+<input class="w-full pl-10 pr-10 py-2.5 bg-slate-50/70 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary tracking-wider transition" id="signin-password" name="signin-password" placeholder="Enter password" required="" type="password" value="ClinicalPasswordSample123">
+<button aria-label="Toggle password visibility" class="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600 focus:outline-none" type="button">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+</div>
+</div>
+<div class="flex items-center justify-between text-xs pt-1">
+<label class="flex items-center space-x-2 cursor-pointer select-none">
+<input class="w-3.5 h-3.5 rounded text-primary border-slate-300 focus:ring-primary focus:ring-offset-0" type="checkbox">
+<span class="text-slate-600">Remember on this terminal</span>
+</label>
+<a class="text-primary hover:text-brand-700 font-medium transition-colors" href="#forgot">Forgot password?</a>
+</div>
+<div class="pt-2">
+<button class="w-full h-11 bg-primary hover:bg-brand-700 text-white rounded-xl text-sm font-semibold shadow-floating-btn hover:shadow-lg transition-all flex items-center justify-center space-x-2" id="btn-submit-signin" type="submit">
+<span id="signin-btn-text" class="">Sign In to Clinical Workspace</span>
+<svg class="w-4 h-4 stroke-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</button>
+</div>
+</form>
+<!-- Discreet Administrator Login Access -->
+<div class="pt-4 border-t border-slate-100 text-center">
+<button class="inline-flex items-center text-xs font-medium text-slate-500 hover:text-primary transition-colors gap-1.5 py-1 px-2 rounded-lg hover:bg-surface-container-low" id="link-admin-login" type="button">
+<span class="material-symbols-outlined text-[15px] text-slate-400">admin_panel_settings</span>
+<span class="">Institute Administrator? Sign in here →</span>
+</button>
+</div>
+</div>
+<!-- ============================================== -->
+<!-- 2. CREATE ACCOUNT VIEW (Registration + Security Questions) -->
+<!-- ============================================== -->
+<div class="space-y-5 transition-all duration-300" id="view-register">
+<div>
+<h1 class="text-2xl font-bold tracking-tight text-slate-900">Create Account</h1>
+<p class="text-xs sm:text-sm text-slate-500 mt-1">Instant enrollment for clinical personnel and verified patients.</p>
+</div>
+<!-- Registration Form Inputs -->
+<form action="#" class="space-y-4" method="POST" onsubmit="return false;">
+<div>
+<label class="block text-xs font-semibold text-slate-700 mb-1" for="reg-fullname">Full Name</label>
+<input class="w-full px-3.5 py-2.5 bg-slate-50/70 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition" id="reg-fullname" name="reg-fullname" placeholder="Alex Rivera or Dr. Jane Doe" required="" type="text" data-step="1">
+</div>
+<div>
+<label class="block text-xs font-semibold text-slate-700 mb-1" for="reg-email" id="reg-email-label">Email Address</label>
+<input class="w-full px-3.5 py-2.5 bg-slate-50/70 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition" id="reg-email" name="reg-email" placeholder="dr.chen@stjude-health.org" required="" type="email">
+</div>
+<div>
+<label class="block text-xs font-semibold text-slate-700 mb-1" for="reg-password">Create Secure Password</label>
+<input class="w-full px-3.5 py-2.5 bg-slate-50/70 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition" id="reg-password" name="reg-password" placeholder="At least 8 characters" required="" type="password">
+<div class="flex items-center space-x-1.5 mt-2">
+<div class="h-1 flex-1 bg-primary rounded-full"></div>
+<div class="h-1 flex-1 bg-primary rounded-full"></div>
+<div class="h-1 flex-1 bg-slate-200 rounded-full"></div>
+<span class="text-[11px] text-slate-500 ml-1">Good strength</span>
+</div>
+</div>
+<div class="">
+<label class="block text-xs font-semibold text-slate-700 mb-1" for="reg-confirm-password">Confirm Password</label>
+<input class="w-full px-3.5 py-2.5 bg-slate-50/70 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition" id="reg-confirm-password" name="reg-confirm-password" placeholder="Repeat your password" required="" type="password">
+</div><div id="reg-code-wrapper">
+<div class="flex justify-between items-center mb-1">
+<label class="block text-xs font-semibold text-slate-700" for="reg-practice-code" id="reg-code-label">Practice / Clinic Code</label>
+<span class="text-[11px] text-slate-400 font-normal">Optional</span>
+</div>
+<input class="w-full px-3.5 py-2.5 bg-slate-50/70 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition" id="reg-practice-code" name="reg-practice-code" placeholder="e.g. STJ-99201 or leave blank" type="text">
+</div>
+<!-- Mandatory Security Questions Section for Password Recovery -->
+<!-- Step 1 Actions & Terms -->
+
+
+<!-- Step 2: Dedicated Security Questions Verification Step -->
+
+
+
+</form>
+</div>
+<!-- ============================================== -->
+<!-- 3. DEDICATED INSTITUTE ADMINISTRATOR SIGN IN   -->
+<!-- ============================================== -->
+<div class="space-y-6 transition-all duration-300 hidden" id="view-admin">
+<div class="flex items-center justify-between pb-3 border-b border-slate-200">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-lg bg-amber-500/10 text-amber-700 border border-amber-300/60 flex items-center justify-center">
+<span class="material-symbols-outlined text-base">admin_panel_settings</span>
+</div>
+<span class="text-xs font-semibold uppercase tracking-wider text-amber-900">Institute Administration Portal</span>
+</div>
+<button class="text-xs text-primary font-medium hover:underline inline-flex items-center gap-1" id="link-return-login" type="button">
+<span class="material-symbols-outlined text-sm">arrow_back</span>
+<span class="">Return to standard login</span>
+</button>
+</div>
+<div>
+<h1 class="text-2xl font-bold tracking-tight text-slate-900">Institute Administrator Login</h1>
+<p class="text-xs sm:text-sm text-slate-500 mt-1">Restricted governance portal for credentialing, audit compliance &amp; EHR security.</p>
+</div>
+<div class="bg-amber-50 border border-amber-200 rounded-xl p-3 flex items-start gap-2.5 text-amber-900 text-xs">
+<span class="material-symbols-outlined text-amber-700 text-base mt-0.5">security</span>
+<div class="">
+<span class="font-semibold">Governance Notice:</span> Administrative registrations cannot be self-enrolled. Access is provisioned strictly by Institute Security Board.
+  </div>
+</div>
+<form action="#" class="space-y-4" method="POST" onsubmit="return false;">
+<div>
+<label class="block text-xs font-semibold text-slate-700 mb-1" for="admin-email">Institutional Executive / IT Email</label>
+<div class="relative">
+<span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.206" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</span>
+<input class="w-full pl-10 pr-3.5 py-2.5 bg-slate-50/70 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition" id="admin-email" placeholder="admin.director@stjude-health.org" required="" type="email" value="dr.sarah.jenkins@stjude-health.org">
+</div>
+</div>
+<div>
+<label class="block text-xs font-semibold text-slate-700 mb-1" for="admin-domain-id">Security Token / Domain ID</label>
+<div class="relative">
+<span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+<span class="material-symbols-outlined text-sm">badge</span>
+</span>
+<input class="w-full pl-10 pr-3.5 py-2.5 bg-slate-50/70 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary font-mono text-xs transition" id="admin-domain-id" placeholder="e.g. DOM-GOV-9821" required="" type="text" value="DOM-CORP-01">
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-1">
+<label class="block text-xs font-semibold text-slate-700" for="admin-password">Administrative Passphrase</label>
+<a class="text-xs text-primary hover:text-brand-700 font-medium" href="#admin-recovery">Token Recovery</a>
+</div>
+<div class="relative">
+<span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</span>
+<input class="w-full pl-10 pr-10 py-2.5 bg-slate-50/70 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary tracking-wider transition" id="admin-password" placeholder="Enter admin passphrase" required="" type="password" value="SuperAdminClinical#2024">
+<button aria-label="Toggle password visibility" class="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600 focus:outline-none" type="button">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+</div>
+</div>
+<div class="pt-2">
+<button class="w-full h-11 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-sm font-semibold shadow-lg shadow-slate-900/20 hover:shadow-xl transition-all flex items-center justify-center space-x-2" type="submit">
+<span class="material-symbols-outlined text-sm">lock_open</span>
+<span class="">Authorize Institute Governance Session</span>
+</button>
+</div>
+</form>
+<div class="pt-3 text-center">
+<button class="text-xs text-slate-500 hover:text-primary transition-colors inline-flex items-center gap-1" id="btn-admin-back-bottom" type="button">
+<span class="">← Back to Patient / Clinician Sign In</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Bottom Clean Security Footnote -->
+<div class="pt-6 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+<span class="">Encrypted &amp; HIPAA Compliant Gateway</span>
+</div>
+<span class="">MediBridge Clinical v4.8</span>
+</div>
+</div>
+</div>
+<!-- JavaScript Interactivity: Role Switching, Administrator View, and Recovery Fields -->
+<script data-purpose="ui-interactions">
+  document.addEventListener('DOMContentLoaded', () => {
+    // 1. Role Data Mapping (Patient, Doctor, Desk)
+    const roleData = {
+      patient: {
+        imageId: 'bg-img-patient',
+        badge: 'Patient Health Portal',
+        headline: 'Personalized care journey and health vault at your fingertips.',
+        subtitle: 'Instant check-in passes, encrypted record access, and continuous care timelines directly coordinated with your doctors.',
+        emailPlaceholder: 'patient.email@example.com',
+        roleBadgeTitle: 'Patient Portal',
+        emailLabel: 'Personal / Patient Email',
+        btnText: 'Sign In to Patient Portal',
+        codeLabel: 'Clinic Invitation or Patient ID',
+        codePlaceholder: 'e.g. PT-2024-998 or blank'
+      },
+      doctor: {
+        imageId: 'bg-img-doctor',
+        badge: 'Clinician Workspace',
+        headline: 'Synchronized care for physicians, care teams, and patients.',
+        subtitle: 'Seamless coordination at clinical scale, secured with hardware-level encryption and real-time FHIR synchronization.',
+        emailPlaceholder: 'dr.chen@stjude-health.org',
+        roleBadgeTitle: 'Clinician Workspace',
+        emailLabel: 'Institutional Clinical Email',
+        btnText: 'Sign In to Clinical Workspace',
+        codeLabel: 'Practice / Clinic Code',
+        codePlaceholder: 'e.g. STJ-99201 or leave blank'
+      },
+      desk: {
+        imageId: 'bg-img-desk',
+        badge: 'Reception & Scheduling Desk',
+        headline: 'Frictionless patient arrival and clinician scheduling triage.',
+        subtitle: 'Live queue monitoring, rapid digital pass check-in, and automated physician slot matching with zero scheduling conflicts.',
+        emailPlaceholder: 'intake.desk@stjude-health.org',
+        roleBadgeTitle: 'Reception & Scheduling Desk',
+        emailLabel: 'Clinic Operations Email',
+        btnText: 'Sign In to Reception Console',
+        codeLabel: 'Facility Station Code',
+        codePlaceholder: 'e.g. DESK-WING-B'
+      },
+      admin: {
+        imageId: 'bg-img-admin',
+        badge: 'Institute Governance & Admin',
+        headline: 'Holistic clinical operations and facility governance.',
+        subtitle: 'Institutional workforce credentialing, audit compliance reporting, and enterprise-wide EHR interoperability.',
+        emailPlaceholder: 'admin.director@stjude-health.org',
+        roleBadgeTitle: 'Enterprise Governance',
+        emailLabel: 'Executive / IT Admin Email',
+        btnText: 'Sign In to Governance Hub',
+        codeLabel: 'Enterprise Domain ID',
+        codePlaceholder: 'e.g. DOM-CORP-01'
+      }
+    };
+
+    let activeRole = 'patient';
+    let previousRole = 'patient';
+
+    // Visual Panel Elements
+    const badgeEl = document.getElementById('visual-badge-text');
+    const headlineEl = document.getElementById('visual-headline');
+    const subtitleEl = document.getElementById('visual-subtitle');
+    const textContainer = document.getElementById('visual-text-container');
+    const currentRoleBadge = document.getElementById('current-role-badge');
+    const signinEmailInput = document.getElementById('signin-email');
+    const regEmailInput = document.getElementById('reg-email');
+    const signinEmailLabel = document.getElementById('signin-email-label');
+    const signinBtnText = document.getElementById('signin-btn-text');
+    const regCodeLabel = document.getElementById('reg-code-label');
+    const regPracticeCodeInput = document.getElementById('reg-practice-code');
+
+    // Role Buttons
+    const roleButtons = document.querySelectorAll('.role-btn');
+
+    function applyRole(roleKey) {
+      if (!roleData[roleKey]) return;
+      activeRole = roleKey;
+      const data = roleData[roleKey];
+
+      // Update button styling
+      roleButtons.forEach(btn => {
+        const isCurrent = btn.getAttribute('data-role') === roleKey;
+        const svg = btn.querySelector('svg');
+        if (isCurrent) {
+          btn.className = 'role-btn py-2 text-xs font-semibold text-primary bg-white shadow-sm rounded-lg border border-slate-200/60 focus:outline-none transition-all flex flex-col items-center gap-1';
+          if (svg) {
+            svg.classList.remove('opacity-75');
+            svg.classList.add('text-primary');
+          }
+        } else {
+          btn.className = 'role-btn py-2 text-xs font-medium text-slate-600 rounded-lg hover:text-slate-900 focus:outline-none transition-all flex flex-col items-center gap-1';
+          if (svg) {
+            svg.classList.remove('text-primary');
+            svg.classList.add('opacity-75');
+          }
+        }
+      });
+
+      // Smooth Cross-fade for background images
+      const images = document.querySelectorAll('.role-bg-image');
+      images.forEach(img => {
+        if (img.id === data.imageId) {
+          img.classList.remove('opacity-0', 'pointer-events-none');
+          img.classList.add('opacity-85');
+        } else {
+          img.classList.remove('opacity-85');
+          img.classList.add('opacity-0', 'pointer-events-none');
+        }
+      });
+
+      // Subtle fade/slide transition for copy
+      textContainer.style.opacity = '0';
+      textContainer.style.transform = 'translateY(6px)';
+
+      setTimeout(() => {
+        badgeEl.textContent = data.badge;
+        headlineEl.textContent = data.headline;
+        subtitleEl.textContent = data.subtitle;
+        if (currentRoleBadge) currentRoleBadge.textContent = data.roleBadgeTitle;
+
+        // Adapt email placeholders & labels to the role
+        if (signinEmailInput) {
+          signinEmailInput.placeholder = data.emailPlaceholder;
+          signinEmailInput.value = data.emailPlaceholder;
+        }
+        if (regEmailInput) {
+          regEmailInput.placeholder = data.emailPlaceholder;
+        }
+        if (signinEmailLabel) {
+          signinEmailLabel.textContent = data.emailLabel;
+        }
+        if (signinBtnText) {
+          signinBtnText.textContent = data.btnText;
+        }
+        if (regCodeLabel) {
+          regCodeLabel.textContent = data.codeLabel;
+        }
+        if (regPracticeCodeInput) {
+          regPracticeCodeInput.placeholder = data.codePlaceholder;
+        }
+
+        textContainer.style.opacity = '1';
+        textContainer.style.transform = 'translateY(0)';
+      }, 150);
+    }
+
+    roleButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const role = btn.getAttribute('data-role');
+        applyRole(role);
+      });
+    });
+
+    // 2. Tab Toggling: Sign In vs Create Account
+    const tabBtnSignIn = document.getElementById('tab-btn-signin');
+    const tabBtnRegister = document.getElementById('tab-btn-register');
+    const viewSignIn = document.getElementById('view-signin');
+    const viewRegister = document.getElementById('view-register');
+    const viewAdmin = document.getElementById('view-admin');
+    const standardTabs = document.getElementById('standard-mode-tabs');
+    const roleSelectorContainer = document.getElementById('role-selector-container');
+
+    function setView(view) {
+      // Hide admin view
+      viewAdmin.classList.add('hidden');
+      standardTabs.classList.remove('hidden');
+      roleSelectorContainer.classList.remove('hidden');
+
+      if (view === 'signin') {
+        tabBtnSignIn.className = 'px-4 py-1.5 text-xs font-semibold text-primary bg-white shadow-sm rounded-lg border border-slate-200/60 transition-all';
+        tabBtnRegister.className = 'px-4 py-1.5 text-xs font-medium text-slate-600 hover:text-slate-900 rounded-lg transition-all';
+        viewSignIn.classList.remove('hidden');
+        viewRegister.classList.add('hidden');
+      } else {
+        tabBtnRegister.className = 'px-4 py-1.5 text-xs font-semibold text-primary bg-white shadow-sm rounded-lg border border-slate-200/60 transition-all';
+        tabBtnSignIn.className = 'px-4 py-1.5 text-xs font-medium text-slate-600 hover:text-slate-900 rounded-lg transition-all';
+        viewRegister.classList.remove('hidden');
+        viewSignIn.classList.add('hidden');
+      }
+    }
+
+    tabBtnSignIn.addEventListener('click', () => setView('signin'));
+    tabBtnRegister.addEventListener('click', () => setView('register'));
+
+    // 3. Admin Login Switching Logic
+    const linkAdminLogin = document.getElementById('link-admin-login');
+    const linkReturnLogin = document.getElementById('link-return-login');
+    const btnAdminBackBottom = document.getElementById('btn-admin-back-bottom');
+
+    function showAdminLogin() {
+      previousRole = activeRole;
+      viewSignIn.classList.add('hidden');
+      viewRegister.classList.add('hidden');
+      standardTabs.classList.add('hidden');
+      roleSelectorContainer.classList.add('hidden');
+      viewAdmin.classList.remove('hidden');
+      applyRole('admin');
+    }
+
+    function returnFromAdmin() {
+      viewAdmin.classList.add('hidden');
+      standardTabs.classList.remove('hidden');
+      roleSelectorContainer.classList.remove('hidden');
+      setView('signin');
+      applyRole(previousRole || 'patient');
+    }
+
+    if (linkAdminLogin) {
+      linkAdminLogin.addEventListener('click', (e) => {
+        e.preventDefault();
+        showAdminLogin();
+      });
+    }
+
+    if (linkReturnLogin) {
+      linkReturnLogin.addEventListener('click', (e) => {
+        e.preventDefault();
+        returnFromAdmin();
+      });
+    }
+
+    if (btnAdminBackBottom) {
+      btnAdminBackBottom.addEventListener('click', (e) => {
+        e.preventDefault();
+        returnFromAdmin();
+      });
+    }
+
+    // Initialize Patient role on load
+    applyRole('patient');
+  });
+</script>
+
+
+</body></html>
