@@ -1,0 +1,488 @@
+<!DOCTYPE html><html lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+    @layer base {
+      html, body { margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
+      main > :first-child { margin-top: 0 !important; }
+      main > :last-child { margin-bottom: 0 !important; }
+    }
+    ::-webkit-scrollbar { display: none; }
+  </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary-container": "#0074a6",
+            "secondary-fixed-dim": "#b8c4ff",
+            "inverse-on-surface": "#eaf1ff",
+            "on-secondary-fixed": "#001453",
+            "on-secondary-fixed-variant": "#173bab",
+            "on-error-container": "#93000a",
+            "on-surface-variant": "#434655",
+            "surface-variant": "#d3e4fe",
+            "on-tertiary-fixed-variant": "#004c6e",
+            "on-background": "#0b1c30",
+            "secondary-fixed": "#dde1ff",
+            "surface-container-low": "#eff4ff",
+            "on-secondary": "#ffffff",
+            "error": "#ba1a1a",
+            "on-error": "#ffffff",
+            "on-tertiary-fixed": "#001e2f",
+            "on-tertiary": "#ffffff",
+            "outline": "#737686",
+            "on-primary-fixed-variant": "#003ea8",
+            "tertiary-fixed-dim": "#89ceff",
+            "error-container": "#ffdad6",
+            "primary": "#004ac6",
+            "tertiary-fixed": "#c9e6ff",
+            "tertiary": "#005a82",
+            "surface-container-lowest": "#ffffff",
+            "background": "#f8f9ff",
+            "on-primary-fixed": "#00174b",
+            "secondary-container": "#708cfd",
+            "inverse-primary": "#b4c5ff",
+            "primary-fixed": "#dbe1ff",
+            "surface-container-highest": "#d3e4fe",
+            "surface": "#f8f9ff",
+            "on-secondary-container": "#00217a",
+            "surface-container-high": "#dce9ff",
+            "on-primary": "#ffffff",
+            "primary-container": "#2563eb",
+            "secondary": "#3755c3",
+            "on-tertiary-container": "#e4f2ff",
+            "inverse-surface": "#213145",
+            "surface-bright": "#f8f9ff",
+            "on-surface": "#0b1c30",
+            "primary-fixed-dim": "#b4c5ff",
+            "surface-dim": "#cbdbf5",
+            "outline-variant": "#c3c6d7",
+            "on-primary-container": "#eeefff",
+            "surface-tint": "#0053db",
+            "surface-container": "#e5eeff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "space-xl": "1.5rem",
+            "gutter-md": "1.25rem",
+            "margin-lg": "2rem",
+            "space-lg": "1.25rem",
+            "margin-md": "1.5rem",
+            "space-xs": "0.25rem",
+            "margin": "1rem",
+            "space-2xl": "2rem",
+            "gutter": "1rem",
+            "space-md": "0.75rem",
+            "space-2xs": "0.125rem",
+            "space-base": "1rem",
+            "gutter-lg": "1.5rem"
+          },
+          "fontFamily": {
+            "display-lg": ["Inter"],
+            "body-md": ["Inter"],
+            "body-lg": ["Inter"],
+            "headline-md": ["Inter"],
+            "headline-lg": ["Inter"],
+            "code-sm": ["Inter"],
+            "body-sm": ["Inter"],
+            "label-lg": ["Inter"],
+            "display-lg-mobile": ["Inter"],
+            "label-md": ["Inter"],
+            "label-sm": ["Inter"],
+            "headline-sm": ["Inter"]
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-surface font-body-md text-body-md text-on-surface antialiased">
+<!-- Left Navigation Bar -->
+
+<!-- Main View Area -->
+<div class="flex flex-col min-h-screen">
+<!-- Clean Minimalist Header -->
+<header class="bg-surface-container-lowest border-b border-outline-variant/30 sticky top-0 z-40">
+  <!-- Primary App Header -->
+  <div class="h-14 px-margin-lg flex items-center justify-between border-b border-outline-variant/20">
+    <!-- Far Left: MediBridge Brand & Logo -->
+    <div class="flex items-center gap-space-md">
+      <div class="flex items-center gap-2.5 select-none cursor-pointer">
+        <div class="w-8 h-8 rounded-lg bg-primary text-on-primary flex items-center justify-center font-bold shadow-xs">
+          <span class="material-symbols-outlined text-[20px]">local_hospital</span>
+        </div>
+        <div class="flex flex-col text-left">
+          <div class="flex items-center gap-1.5">
+            <span class="text-sm font-bold tracking-tight text-on-surface">MediBridge</span>
+            <span class="text-[10px] uppercase font-semibold tracking-wider px-1.5 py-0.5 rounded bg-surface-container-low text-primary border border-primary/20">Clinical Care</span>
+          </div>
+          <span class="text-[10px] text-on-surface-variant font-medium leading-tight">Doctor Workspace</span>
+        </div>
+      </div>
+    </div>
+    <!-- Far Right: Search, Notifications & Profile -->
+    <div class="flex items-center gap-space-md">
+      <button class="w-8 h-8 rounded-full flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors relative" title="Notifications">
+        <span class="material-symbols-outlined text-[20px]">notifications</span>
+        <span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-error border-2 border-surface-container-lowest"></span>
+      </button>
+      <div class="flex items-center gap-2.5 pl-3 border-l border-outline-variant/30 cursor-pointer select-none group">
+        <div class="relative">
+          <img alt="Dr. Eleanor Vance" class="w-8 h-8 rounded-full object-cover border border-outline-variant/40" src="https://lh3.googleusercontent.com/aida/AEtjO1VyKybhItGAbf2N7afcc8rQYzBCPhHZxvC1yXCPSgXYfwrJzVFajvbgY22CZFexLVq5-1NBmNJB9Yl4VIIFjcB74E4sSr6qORrEoNE9T_qEFP8Exh0CbXhV5eIgNkK7apbPVeoRPy6ywG85WTpwMuv5_505R8AtZ81hLWJlWZuvFhVSkCiMWTC0xttGBRl-RPSU1SN9fEDOLbQqHdzA-teUqGqpDd816OqpaIlaThUUHhmkJDTbUurB">
+          <span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-[#10b981] border-2 border-surface-container-lowest" title="Active / On Duty"></span>
+        </div>
+        <div class="flex flex-col text-left">
+          <span class="text-xs font-semibold text-on-surface leading-tight group-hover:text-primary transition-colors">Dr. E. Vance, MD</span>
+          <span class="text-[11px] text-on-surface-variant leading-tight">Cardiology • Attending</span>
+        </div>
+        <span class="material-symbols-outlined text-outline text-[18px] group-hover:text-on-surface transition-colors">expand_more</span>
+      </div>
+    </div>
+  </div>
+  <!-- Sub-Header: Calendar Toolbar & Actions -->
+
+</header>
+<!-- Main Workspace -->
+<main class="flex-1 p-margin-lg bg-surface">
+<div class="max-w-7xl mx-auto flex flex-col gap-space-md">
+<!-- High-level Clean Metrics (3 simple numbers) -->
+<div class="grid grid-cols-3 gap-space-md">
+<div class="bg-surface-container-lowest rounded-lg p-space-md border border-outline-variant/30 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-xs font-medium text-on-surface-variant">Today's Visits</span>
+<span class="text-2xl font-bold text-on-surface mt-0.5">6</span>
+</div>
+<div class="w-9 h-9 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">person</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-lg p-space-md border border-outline-variant/30 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-xs font-medium text-on-surface-variant">Weekly Total</span>
+<span class="text-2xl font-bold text-on-surface mt-0.5">28</span>
+</div>
+<div class="w-9 h-9 rounded-lg bg-surface-container-low flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[20px]">calendar_month</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-lg p-space-md border border-outline-variant/30 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-xs font-medium text-on-surface-variant">Free Slots</span>
+<span class="text-2xl font-bold text-tertiary mt-0.5">4</span>
+</div>
+<div class="w-9 h-9 rounded-lg bg-surface-container-low flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[20px]">schedule</span>
+</div>
+</div>
+</div>
+<!-- Main Content Area: Gantt Lanes + Compact Right Panel -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-md items-start">
+<!-- Weekly Gantt Timeline (Cols 8) -->
+<div class="xl:col-span-8 bg-surface-container-lowest rounded-lg border border-outline-variant/30 p-space-md flex flex-col">
+<!-- Header bar with Legend -->
+<div class="flex items-center justify-between pb-3 border-b border-outline-variant/20 mb-3"><div class="flex items-center gap-3"><div class="flex items-center gap-2"><span class="text-sm font-semibold text-on-surface">Weekly Schedule</span><span class="text-xs text-on-surface-variant">(08:00 – 17:00)</span></div><div class="flex items-center gap-1 bg-surface-container-low px-1.5 py-0.5 rounded-lg border border-outline-variant/30 ml-2"><button class="w-6 h-6 rounded flex items-center justify-center hover:bg-surface-container-lowest text-on-surface-variant hover:text-on-surface transition-colors" title="Previous Week"><span class="material-symbols-outlined text-[16px]">chevron_left</span></button><button class="px-2 py-0.5 rounded text-xs font-semibold text-on-surface hover:bg-surface-container-lowest transition-colors">Today</button><button class="w-6 h-6 rounded flex items-center justify-center hover:bg-surface-container-lowest text-on-surface-variant hover:text-on-surface transition-colors" title="Next Week"><span class="material-symbols-outlined text-[16px]">chevron_right</span></button><span class="text-xs font-semibold text-on-surface px-2 border-l border-outline-variant/30">Oct 28 – Nov 1, 2024</span></div></div><div class="flex items-center gap-space-md"><div class="bg-surface-container-low border border-outline-variant/30 p-0.5 rounded-lg flex items-center gap-1"><button class="px-2.5 py-1 text-xs bg-primary text-on-primary font-semibold rounded shadow-xs transition-colors" id="btnWeek">Week</button><button class="px-2.5 py-1 text-xs text-on-surface-variant hover:text-on-surface rounded font-medium transition-colors" id="btnMonth">Month</button></div></div></div>
+<!-- Time Column Labels -->
+<div class="overflow-x-auto">
+<div class="min-w-[700px]">
+<div class="grid grid-cols-10 text-[11px] font-medium text-on-surface-variant py-1.5 px-2 bg-surface-container-low rounded mb-2">
+<div class="col-span-1 text-left">Day</div>
+<div class="text-center">08:00</div>
+<div class="text-center">09:00</div>
+<div class="text-center">10:00</div>
+<div class="text-center">11:00</div>
+<div class="text-center">12:00</div>
+<div class="text-center">13:00</div>
+<div class="text-center">14:00</div>
+<div class="text-center">15:00</div>
+<div class="text-center">16:00</div>
+</div>
+<!-- Lanes Container with Current Time Indicator -->
+<div class="flex flex-col gap-2 relative">
+<!-- Subtle Current Time Line (Mon 11:15 AM: ~42.5%) -->
+<div class="absolute top-0 bottom-0 left-[42%] w-0.5 bg-primary/70 z-20 pointer-events-none">
+<div class="absolute -top-1.5 -translate-x-1/2 px-1.5 py-0.5 rounded bg-primary text-[9px] font-semibold text-on-primary shadow-xs">
+                      11:15 AM
+                    </div>
+</div>
+<!-- MONDAY LANE (Today) -->
+<div class="grid grid-cols-10 items-center p-1.5 rounded-lg bg-surface-container-low/60 border border-primary/20">
+<div class="col-span-1 flex flex-col pl-1">
+<span class="text-xs font-bold text-primary">Mon 28</span>
+<span class="text-[10px] text-on-surface-variant">Today</span>
+</div>
+<div class="col-span-9 relative h-14 bg-surface-container-lowest rounded border border-outline-variant/20 flex items-center">
+<!-- Grid hour guidelines -->
+<div class="absolute inset-0 grid grid-cols-9 pointer-events-none opacity-20">
+<div class="border-r border-outline"></div>
+<div class="border-r border-outline"></div>
+<div class="border-r border-outline"></div>
+<div class="border-r border-outline"></div>
+<div class="border-r border-outline"></div>
+<div class="border-r border-outline"></div>
+<div class="border-r border-outline"></div>
+<div class="border-r border-outline"></div>
+<div></div>
+</div>
+<!-- Marcus Chen 09:00 - 10:00 -->
+<div class="cursor-pointer absolute left-[11.1%] w-[11.1%] h-11 bg-primary/15 border-l-2 border-primary hover:bg-primary/25 rounded p-1.5 flex flex-col justify-center transition-all z-10" onclick="selectSlot('Marcus Chen', 'MRN-84920', 'In-Person', 'Post-Op Followup', '09:00 - 10:00 AM')">
+<span class="text-[11px] font-semibold text-on-surface truncate">M. Chen</span>
+<span class="text-[9px] text-on-surface-variant truncate">09:00 • In-Person</span>
+</div>
+<!-- Sarah Jenkins 10:30 - 11:45 -->
+<div class="cursor-pointer absolute left-[27.7%] w-[14%] h-11 bg-primary text-on-primary rounded p-1.5 flex flex-col justify-center shadow-xs transition-all z-10" onclick="selectSlot('Sarah Jenkins', 'MRN-31024', 'In-Person', 'Hypertension Review', '10:30 - 11:45 AM')">
+<span class="text-[11px] font-semibold truncate">Sarah Jenkins</span>
+<span class="text-[9px] opacity-90 truncate">10:30 • In-Person</span>
+</div>
+<!-- David Ross 13:15 - 14:00 (Telehealth) -->
+<div class="cursor-pointer absolute left-[58%] w-[8.5%] h-11 bg-tertiary-container text-on-tertiary rounded p-1.5 flex flex-col justify-center transition-all z-10" onclick="selectSlot('David Ross', 'MRN-48190', 'Video / Telehealth', 'Lipid Panel Review', '01:15 - 02:00 PM')">
+<span class="text-[11px] font-semibold truncate">D. Ross</span>
+<span class="text-[9px] opacity-90 truncate">13:15 • Video</span>
+</div>
+<!-- Elena Rostova 14:45 - 15:45 -->
+<div class="cursor-pointer absolute left-[75%] w-[11.1%] h-11 bg-primary/15 border-l-2 border-primary hover:bg-primary/25 rounded p-1.5 flex flex-col justify-center transition-all z-10" onclick="selectSlot('Elena Rostova', 'MRN-55018', 'In-Person', 'Pre-Surgical Clearance', '02:45 - 03:45 PM')">
+<span class="text-[11px] font-semibold text-on-surface truncate">E. Rostova</span>
+<span class="text-[9px] text-on-surface-variant truncate">14:45 • In-Person</span>
+</div>
+</div>
+</div>
+<!-- TUESDAY LANE -->
+<div class="grid grid-cols-10 items-center p-1.5 rounded-lg bg-surface-container-lowest hover:bg-surface-container-low/40 transition-colors">
+<div class="col-span-1 flex flex-col pl-1">
+<span class="text-xs font-semibold text-on-surface">Tue 29</span>
+</div>
+<div class="col-span-9 relative h-14 bg-surface-container-low/40 rounded border border-outline-variant/20 flex items-center">
+<div class="absolute inset-0 grid grid-cols-9 pointer-events-none opacity-20">
+<div class="border-r border-outline"></div>
+<div class="border-r border-outline"></div>
+<div class="border-r border-outline"></div>
+<div class="border-r border-outline"></div>
+<div class="border-r border-outline"></div>
+<div class="border-r border-outline"></div>
+<div class="border-r border-outline"></div>
+<div class="border-r border-outline"></div>
+<div></div>
+</div>
+<!-- Robert Kim 09:30 - 10:30 -->
+<div class="cursor-pointer absolute left-[16.6%] w-[11.1%] h-11 bg-primary/15 border-l-2 border-primary hover:bg-primary/25 rounded p-1.5 flex flex-col justify-center transition-all z-10" onclick="selectSlot('Robert Kim', 'MRN-61291', 'In-Person', 'Stress Test Eval', '09:30 - 10:30 AM')">
+<span class="text-[11px] font-semibold text-on-surface truncate">R. Kim</span>
+<span class="text-[9px] text-on-surface-variant truncate">09:30 • In-Person</span>
+</div>
+<!-- Maria Garcia 14:00 - 15:15 (Video) -->
+<div class="cursor-pointer absolute left-[66.6%] w-[14%] h-11 bg-tertiary-container text-on-tertiary rounded p-1.5 flex flex-col justify-center transition-all z-10" onclick="selectSlot('Maria Garcia', 'MRN-77402', 'Video / Telehealth', 'Arrhythmia Followup', '02:00 - 03:15 PM')">
+<span class="text-[11px] font-semibold truncate">M. Garcia</span>
+<span class="text-[9px] opacity-90 truncate">14:00 • Video</span>
+</div>
+</div>
+</div>
+<!-- WEDNESDAY LANE -->
+<div class="grid grid-cols-10 items-center p-1.5 rounded-lg bg-surface-container-lowest hover:bg-surface-container-low/40 transition-colors">
+<div class="col-span-1 flex flex-col pl-1">
+<span class="text-xs font-semibold text-on-surface">Wed 30</span>
+</div>
+<div class="col-span-9 relative h-14 bg-surface-container-low/40 rounded border border-outline-variant/20 flex items-center">
+<div class="absolute inset-0 grid grid-cols-9 pointer-events-none opacity-20">
+<div class="border-r border-outline"></div>
+<div class="border-r border-outline"></div>
+<div class="border-r border-outline"></div>
+<div class="border-r border-outline"></div>
+<div class="border-r border-outline"></div>
+<div class="border-r border-outline"></div>
+<div class="border-r border-outline"></div>
+<div class="border-r border-outline"></div>
+<div></div>
+</div>
+<!-- James Thorne 10:00 - 11:30 -->
+<div class="cursor-pointer absolute left-[22.2%] w-[16.6%] h-11 bg-primary/15 border-l-2 border-primary hover:bg-primary/25 rounded p-1.5 flex flex-col justify-center transition-all z-10" onclick="selectSlot('James Thorne', 'MRN-19033', 'In-Person', 'Pacemaker Check', '10:00 - 11:30 AM')">
+<span class="text-[11px] font-semibold text-on-surface truncate">J. Thorne</span>
+<span class="text-[9px] text-on-surface-variant truncate">10:00 • In-Person</span>
+</div>
+<!-- Clinical Research block 13:00 - 17:00 -->
+<div class="absolute left-[55.5%] w-[44.5%] h-10 bg-surface-container-high/70 text-on-surface-variant rounded px-2.5 flex items-center justify-between text-xs">
+<span class="font-medium text-[11px] truncate">Protected Clinical Research &amp; Mentorship</span>
+<span class="text-[10px] text-outline">13:00 - 17:00</span>
+</div>
+</div>
+</div>
+<!-- THURSDAY LANE -->
+<div class="grid grid-cols-10 items-center p-1.5 rounded-lg bg-surface-container-lowest hover:bg-surface-container-low/40 transition-colors">
+<div class="col-span-1 flex flex-col pl-1">
+<span class="text-xs font-semibold text-on-surface">Thu 31</span>
+</div>
+<div class="col-span-9 relative h-14 bg-surface-container-low/40 rounded border border-outline-variant/20 flex items-center">
+<div class="absolute inset-0 grid grid-cols-9 pointer-events-none opacity-20">
+<div class="border-r border-outline"></div>
+<div class="border-r border-outline"></div>
+<div class="border-r border-outline"></div>
+<div class="border-r border-outline"></div>
+<div class="border-r border-outline"></div>
+<div class="border-r border-outline"></div>
+<div class="border-r border-outline"></div>
+<div class="border-r border-outline"></div>
+<div></div>
+</div>
+<!-- Claire Wu 08:45 - 09:45 -->
+<div class="cursor-pointer absolute left-[8.3%] w-[11.1%] h-11 bg-primary/15 border-l-2 border-primary hover:bg-primary/25 rounded p-1.5 flex flex-col justify-center transition-all z-10" onclick="selectSlot('Claire Wu', 'MRN-44910', 'In-Person', 'Echo Evaluation', '08:45 - 09:45 AM')">
+<span class="text-[11px] font-semibold text-on-surface truncate">Claire Wu</span>
+<span class="text-[9px] text-on-surface-variant truncate">08:45 • In-Person</span>
+</div>
+<!-- Grand Rounds 12:00 - 14:00 -->
+<div class="absolute left-[44.4%] w-[22.2%] h-10 bg-surface-container-high/70 text-on-surface-variant rounded px-2 flex items-center justify-between text-xs">
+<span class="font-medium text-[11px] truncate">Grand Rounds</span>
+<span class="text-[10px] text-outline">12:00 - 14:00</span>
+</div>
+<!-- Arthur Pendelton 15:30 - 16:30 -->
+<div class="cursor-pointer absolute left-[83.3%] w-[11.1%] h-11 bg-primary/15 border-l-2 border-primary hover:bg-primary/25 rounded p-1.5 flex flex-col justify-center transition-all z-10" onclick="selectSlot('Arthur Pendelton', 'MRN-88219', 'In-Person', 'Angina Evaluation', '03:30 - 04:30 PM')">
+<span class="text-[11px] font-semibold text-on-surface truncate">A. Pendelton</span>
+<span class="text-[9px] text-on-surface-variant truncate">15:30 • In-Person</span>
+</div>
+</div>
+</div>
+<!-- FRIDAY LANE -->
+<div class="grid grid-cols-10 items-center p-1.5 rounded-lg bg-surface-container-lowest hover:bg-surface-container-low/40 transition-colors">
+<div class="col-span-1 flex flex-col pl-1">
+<span class="text-xs font-semibold text-on-surface">Fri 01</span>
+</div>
+<div class="col-span-9 relative h-14 bg-surface-container-low/40 rounded border border-outline-variant/20 flex items-center">
+<div class="absolute inset-0 grid grid-cols-9 pointer-events-none opacity-20">
+<div class="border-r border-outline"></div>
+<div class="border-r border-outline"></div>
+<div class="border-r border-outline"></div>
+<div class="border-r border-outline"></div>
+<div class="border-r border-outline"></div>
+<div class="border-r border-outline"></div>
+<div class="border-r border-outline"></div>
+<div class="border-r border-outline"></div>
+<div></div>
+</div>
+<!-- T. O'Connor 09:00 - 10:15 -->
+<div class="cursor-pointer absolute left-[11.1%] w-[13.8%] h-11 bg-primary/15 border-l-2 border-primary hover:bg-primary/25 rounded p-1.5 flex flex-col justify-center transition-all z-10" onclick="selectSlot('T. O\'Connor', 'MRN-22194', 'In-Person', 'Post-Ablation Check', '09:00 - 10:15 AM')">
+<span class="text-[11px] font-semibold text-on-surface truncate">T. O'Connor</span>
+<span class="text-[9px] text-on-surface-variant truncate">09:00 • In-Person</span>
+</div>
+<!-- Grace Hopper 11:00 - 12:00 (Video) -->
+<div class="cursor-pointer absolute left-[33.3%] w-[11.1%] h-11 bg-tertiary-container text-on-tertiary rounded p-1.5 flex flex-col justify-center transition-all z-10" onclick="selectSlot('Grace Hopper', 'MRN-33019', 'Video / Telehealth', 'Telehealth Review', '11:00 - 12:00 PM')">
+<span class="text-[11px] font-semibold truncate">G. Hopper</span>
+<span class="text-[9px] opacity-90 truncate">11:00 • Video</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Compact Right Panel (Cols 4) -->
+<div class="xl:col-span-4 flex flex-col gap-space-md">
+<!-- Selected Appointment Details -->
+<div class="bg-surface-container-lowest rounded-lg border border-outline-variant/30 p-space-md flex flex-col gap-space-sm">
+<div class="flex items-center justify-between pb-2 border-b border-outline-variant/20">
+<span class="text-xs font-bold text-on-surface uppercase tracking-wider">Selected Appointment</span>
+<span class="text-[11px] font-medium text-primary bg-primary-fixed px-2 py-0.5 rounded" id="selectedTimeBadge">
+                  10:30 – 11:45 AM
+                </span>
+</div>
+<div class="flex flex-col gap-2 pt-1">
+<div>
+<h3 class="text-base font-bold text-on-surface" id="patientName">Sarah Jenkins</h3>
+<div class="flex items-center gap-2 text-xs text-on-surface-variant mt-0.5">
+<span id="patientMRN" class="">MRN-31024</span>
+<span class="">•</span>
+<span id="patientContact" class="">(555) 234-8901</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-2 mt-1">
+<div class="bg-surface-container-low p-2 rounded">
+<span class="text-[10px] uppercase font-semibold text-on-surface-variant block">Type</span>
+<span class="text-xs font-semibold text-on-surface" id="patientType">In-Person</span>
+</div>
+<div class="bg-surface-container-low p-2 rounded">
+<span class="text-[10px] uppercase font-semibold text-on-surface-variant block">Reason</span>
+<span class="text-xs font-semibold text-on-surface truncate" id="patientReason">Hypertension Review</span>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-col gap-1.5 pt-2">
+<button class="w-full h-9 rounded-lg bg-primary text-on-primary text-xs font-semibold flex items-center justify-center gap-1.5 hover:bg-primary-container transition-colors shadow-xs">
+<span class="material-symbols-outlined text-[16px]">folder_open</span>
+<span class="">Open Patient Chart</span>
+</button>
+<button class="w-full h-8 rounded-lg bg-surface-container-low text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high text-xs font-medium flex items-center justify-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-[16px]">event_busy</span>
+<span class="">Reschedule / Cancel</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Next Up Today (2-3 items) -->
+<div class="bg-surface-container-lowest rounded-lg border border-outline-variant/30 p-space-md flex flex-col gap-2.5">
+<span class="text-xs font-bold text-on-surface uppercase tracking-wider">Next Up Today</span>
+<div class="flex flex-col gap-2">
+<!-- Item 1 -->
+<div class="flex items-center justify-between p-2 rounded bg-surface-container-low/70 border border-outline-variant/20">
+<div class="flex flex-col">
+<span class="text-xs font-bold text-on-surface">David Ross</span>
+<span class="text-[11px] text-on-surface-variant">01:15 PM • Video Consult</span>
+</div>
+<span class="text-[10px] px-2 py-0.5 rounded bg-tertiary-container/15 text-tertiary font-semibold">Video</span>
+</div>
+<!-- Item 2 -->
+<div class="flex items-center justify-between p-2 rounded bg-surface-container-low/70 border border-outline-variant/20">
+<div class="flex flex-col">
+<span class="text-xs font-bold text-on-surface">Elena Rostova</span>
+<span class="text-[11px] text-on-surface-variant">02:45 PM • Pre-Surgical</span>
+</div>
+<span class="text-[10px] px-2 py-0.5 rounded bg-primary-fixed text-primary font-semibold">In-Person</span>
+</div>
+<!-- Item 3 -->
+<div class="flex items-center justify-between p-2 rounded bg-surface-container-low/70 border border-outline-variant/20">
+<div class="flex flex-col">
+<span class="text-xs font-bold text-on-surface">Marcus Chen</span>
+<span class="text-[11px] text-on-surface-variant">Completed (09:00 AM)</span>
+</div>
+<span class="text-[10px] px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-medium">Done</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<script>
+    function selectSlot(name, mrn, type, reason, time) {
+      document.getElementById('patientName').innerText = name;
+      document.getElementById('patientMRN').innerText = mrn;
+      document.getElementById('patientType').innerText = type;
+      document.getElementById('patientReason').innerText = reason;
+      document.getElementById('selectedTimeBadge').innerText = time;
+    }
+
+    // View switcher toggling
+    const viewButtons = ['btnDay', 'btnWeek', 'btnMonth'];
+    viewButtons.forEach(id => {
+      document.getElementById(id)?.addEventListener('click', function() {
+        viewButtons.forEach(b => {
+          const btn = document.getElementById(b);
+          btn.className = 'px-3 py-1 text-xs text-on-surface-variant hover:text-on-surface rounded font-medium transition-colors';
+        });
+        this.className = 'px-3 py-1 text-xs bg-surface-container-lowest text-primary font-semibold rounded shadow-xs transition-colors';
+      });
+    });
+  </script>
+
+
+</body></html>

@@ -1,0 +1,581 @@
+<!DOCTYPE html><html lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+    @layer base {
+      html, body { margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
+      main > :first-child { margin-top: 0 !important; }
+      main > :last-child { margin-bottom: 0 !important; }
+    }
+    ::-webkit-scrollbar { display: none; }
+  </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary-container": "#0074a6",
+            "secondary-fixed-dim": "#b8c4ff",
+            "inverse-on-surface": "#eaf1ff",
+            "on-secondary-fixed": "#001453",
+            "on-secondary-fixed-variant": "#173bab",
+            "on-error-container": "#93000a",
+            "on-surface-variant": "#434655",
+            "surface-variant": "#d3e4fe",
+            "on-tertiary-fixed-variant": "#004c6e",
+            "on-background": "#0b1c30",
+            "secondary-fixed": "#dde1ff",
+            "surface-container-low": "#eff4ff",
+            "on-secondary": "#ffffff",
+            "error": "#ba1a1a",
+            "on-error": "#ffffff",
+            "on-tertiary-fixed": "#001e2f",
+            "on-tertiary": "#ffffff",
+            "outline": "#737686",
+            "on-primary-fixed-variant": "#003ea8",
+            "tertiary-fixed-dim": "#89ceff",
+            "error-container": "#ffdad6",
+            "primary": "#004ac6",
+            "tertiary-fixed": "#c9e6ff",
+            "tertiary": "#005a82",
+            "surface-container-lowest": "#ffffff",
+            "background": "#f8f9ff",
+            "on-primary-fixed": "#00174b",
+            "secondary-container": "#708cfd",
+            "inverse-primary": "#b4c5ff",
+            "primary-fixed": "#dbe1ff",
+            "surface-container-highest": "#d3e4fe",
+            "surface": "#f8f9ff",
+            "on-secondary-container": "#00217a",
+            "surface-container-high": "#dce9ff",
+            "on-primary": "#ffffff",
+            "primary-container": "#2563eb",
+            "secondary": "#3755c3",
+            "on-tertiary-container": "#e4f2ff",
+            "inverse-surface": "#213145",
+            "surface-bright": "#f8f9ff",
+            "on-surface": "#0b1c30",
+            "primary-fixed-dim": "#b4c5ff",
+            "surface-dim": "#cbdbf5",
+            "outline-variant": "#c3c6d7",
+            "on-primary-container": "#eeefff",
+            "surface-tint": "#0053db",
+            "surface-container": "#e5eeff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "space-xl": "1.5rem",
+            "gutter-md": "1.25rem",
+            "margin-lg": "2rem",
+            "space-lg": "1.25rem",
+            "margin-md": "1.5rem",
+            "space-xs": "0.25rem",
+            "margin": "1rem",
+            "space-2xl": "2rem",
+            "gutter": "1rem",
+            "space-md": "0.75rem",
+            "space-2xs": "0.125rem",
+            "space-base": "1rem",
+            "gutter-lg": "1.5rem"
+          },
+          "fontFamily": {
+            "display-lg": ["Inter"],
+            "body-md": ["Inter"],
+            "body-lg": ["Inter"],
+            "headline-md": ["Inter"],
+            "headline-lg": ["Inter"],
+            "code-sm": ["Inter"],
+            "body-sm": ["Inter"],
+            "label-lg": ["Inter"],
+            "display-lg-mobile": ["Inter"],
+            "label-md": ["Inter"],
+            "label-sm": ["Inter"],
+            "headline-sm": ["Inter"]
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-surface font-body-md text-body-md text-on-surface antialiased">
+<!-- Left Navigation Bar -->
+<!-- Main View Area -->
+<div class="flex flex-col min-h-screen">
+<!-- Clean Minimalist Header -->
+<header class="bg-surface-container-lowest border-b border-outline-variant/30 sticky top-0 z-40">
+<!-- Primary App Header -->
+<div class="h-14 px-margin-lg flex items-center justify-between border-b border-outline-variant/20">
+<!-- Far Left: MediBridge Brand & Logo -->
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-2.5 select-none cursor-pointer">
+<div class="w-8 h-8 rounded-lg bg-primary text-on-primary flex items-center justify-center font-bold shadow-xs">
+<span class="material-symbols-outlined text-[20px]">local_hospital</span>
+</div>
+<div class="flex flex-col text-left">
+<div class="flex items-center gap-1.5">
+<span class="text-sm font-bold tracking-tight text-on-surface">MediBridge</span>
+<span class="text-[10px] uppercase font-semibold tracking-wider px-1.5 py-0.5 rounded bg-surface-container-low text-primary border border-primary/20">Clinical Care</span>
+</div>
+<span class="text-[10px] text-on-surface-variant font-medium leading-tight">Doctor Workspace</span>
+</div>
+</div>
+</div>
+<!-- Far Right: Search, Notifications & Profile -->
+<div class="flex items-center gap-space-md">
+<button class="w-8 h-8 rounded-full flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors relative" title="Notifications">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-error border-2 border-surface-container-lowest"></span>
+</button>
+<div class="flex items-center gap-2.5 pl-3 border-l border-outline-variant/30 cursor-pointer select-none group">
+<div class="relative">
+<img alt="Dr. Eleanor Vance" class="w-8 h-8 rounded-full object-cover border border-outline-variant/40" src="https://lh3.googleusercontent.com/aida/AEtjO1VyKybhItGAbf2N7afcc8rQYzBCPhHZxvC1yXCPSgXYfwrJzVFajvbgY22CZFexLVq5-1NBmNJB9Yl4VIIFjcB74E4sSr6qORrEoNE9T_qEFP8Exh0CbXhV5eIgNkK7apbPVeoRPy6ywG85WTpwMuv5_505R8AtZ81hLWJlWZuvFhVSkCiMWTC0xttGBRl-RPSU1SN9fEDOLbQqHdzA-teUqGqpDd816OqpaIlaThUUHhmkJDTbUurB">
+<span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-[#10b981] border-2 border-surface-container-lowest" title="Active / On Duty"></span>
+</div>
+<div class="flex flex-col text-left">
+<span class="text-xs font-semibold text-on-surface leading-tight group-hover:text-primary transition-colors">Dr. E. Vance, MD</span>
+<span class="text-[11px] text-on-surface-variant leading-tight">Cardiology • Attending</span>
+</div>
+<span class="material-symbols-outlined text-outline text-[18px] group-hover:text-on-surface transition-colors">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Sub-Header: Calendar Toolbar & Actions -->
+
+</header>
+<!-- Main Workspace -->
+<main class="flex-1 p-margin-lg bg-surface">
+<div class="max-w-7xl mx-auto flex flex-col gap-space-md">
+<!-- High-level Clean Metrics (3 simple numbers) -->
+<div class="grid grid-cols-3 gap-space-md"><div class="bg-surface-container-lowest rounded-lg p-space-md border border-outline-variant/30 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-xs font-medium text-on-surface-variant">Monthly Visits</span>
+<span class="text-2xl font-bold text-on-surface mt-0.5">112</span>
+</div>
+<div class="w-9 h-9 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">person</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-lg p-space-md border border-outline-variant/30 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-xs font-medium text-on-surface-variant">Weekly Average</span>
+<span class="text-2xl font-bold text-on-surface mt-0.5">28</span>
+</div>
+<div class="w-9 h-9 rounded-lg bg-surface-container-low flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[20px]">analytics</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-lg p-space-md border border-outline-variant/30 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-xs font-medium text-on-surface-variant">Available Slots</span>
+<span class="text-2xl font-bold text-tertiary mt-0.5">18</span>
+</div>
+<div class="w-9 h-9 rounded-lg bg-surface-container-low flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[20px]">event_available</span>
+</div>
+</div></div>
+<!-- Main Content Area: Gantt Lanes + Compact Right Panel -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-md items-start">
+<!-- Weekly Gantt Timeline (Cols 8) -->
+<div class="xl:col-span-8 bg-surface-container-lowest rounded-lg border border-outline-variant/30 p-space-md flex flex-col"><!-- Monthly Header Bar -->
+<div class="flex items-center justify-between pb-3 border-b border-outline-variant/20 mb-3">
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-2">
+<span class="text-sm font-semibold text-on-surface">Monthly Schedule</span>
+<span class="text-xs text-on-surface-variant">(November 2024)</span>
+</div>
+<div class="flex items-center gap-1 bg-surface-container-low px-1.5 py-0.5 rounded-lg border border-outline-variant/30 ml-2">
+<button class="w-6 h-6 rounded flex items-center justify-center hover:bg-surface-container-lowest text-on-surface-variant hover:text-on-surface transition-colors" title="Previous Month">
+<span class="material-symbols-outlined text-[16px]">chevron_left</span>
+</button>
+<button class="px-2 py-0.5 rounded text-xs font-semibold text-on-surface hover:bg-surface-container-lowest transition-colors">Today</button>
+<button class="w-6 h-6 rounded flex items-center justify-center hover:bg-surface-container-lowest text-on-surface-variant hover:text-on-surface transition-colors" title="Next Month">
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+<span class="text-xs font-semibold text-on-surface px-2 border-l border-outline-variant/30">November 2024</span>
+</div>
+</div>
+<div class="flex items-center gap-space-md">
+<div class="bg-surface-container-low border border-outline-variant/30 p-0.5 rounded-lg flex items-center gap-1">
+<button class="px-2.5 py-1 text-xs text-on-surface-variant hover:text-on-surface rounded font-medium transition-colors" id="btnWeek">Week</button>
+<button class="px-2.5 py-1 text-xs bg-primary text-on-primary font-semibold rounded shadow-xs transition-colors" id="btnMonth">Month</button>
+</div>
+</div>
+</div>
+<!-- Calendar Day-of-Week Header -->
+<div class="grid grid-cols-7 gap-1 text-[11px] font-semibold text-on-surface-variant text-center py-1.5 bg-surface-container-low rounded mb-1">
+<div class="">Mon</div>
+<div class="">Tue</div>
+<div class="">Wed</div>
+<div class="">Thu</div>
+<div class="">Fri</div>
+<div class="text-outline">Sat</div>
+<div class="text-outline">Sun</div>
+</div>
+<!-- 5-Week Month Grid -->
+<div class="grid grid-cols-7 gap-1 text-xs select-none">
+<!-- Row 1: Oct 28 - Nov 03 -->
+<div class="min-h-[82px] p-1 rounded border border-outline-variant/20 bg-surface-container-low/30 text-outline flex flex-col gap-1">
+<span class="text-[10px] font-medium pl-0.5">28</span>
+<div class="p-1 rounded bg-surface-container-low text-[9px] truncate opacity-60">2 Visits</div>
+</div>
+<div class="min-h-[82px] p-1 rounded border border-outline-variant/20 bg-surface-container-low/30 text-outline flex flex-col gap-1">
+<span class="text-[10px] font-medium pl-0.5">29</span>
+<div class="p-1 rounded bg-surface-container-low text-[9px] truncate opacity-60">3 Visits</div>
+</div>
+<div class="min-h-[82px] p-1 rounded border border-outline-variant/20 bg-surface-container-low/30 text-outline flex flex-col gap-1">
+<span class="text-[10px] font-medium pl-0.5">30</span>
+<div class="p-1 rounded bg-surface-container-low text-[9px] truncate opacity-60">1 Research</div>
+</div>
+<div class="min-h-[82px] p-1 rounded border border-outline-variant/20 bg-surface-container-low/30 text-outline flex flex-col gap-1">
+<span class="text-[10px] font-medium pl-0.5">31</span>
+<div class="p-1 rounded bg-surface-container-low text-[9px] truncate opacity-60">3 Visits</div>
+</div>
+<div class="min-h-[82px] p-1 rounded border border-outline-variant/30 bg-surface-container-lowest flex flex-col gap-1 cursor-pointer hover:border-primary/40 transition-colors">
+<div class="flex justify-between items-center px-0.5">
+<span class="text-[11px] font-bold text-on-surface">1</span>
+<span class="text-[9px] text-on-surface-variant">4 Appts</span>
+</div>
+<div class="p-1 rounded bg-primary/15 border-l-2 border-primary text-[9px] truncate font-medium text-on-surface">09:00 T. O'Connor</div>
+<div class="p-1 rounded bg-tertiary-container text-on-tertiary text-[9px] truncate font-medium">11:00 G. Hopper</div>
+</div>
+<div class="min-h-[82px] p-1 rounded border border-outline-variant/20 bg-surface-container-low/40 flex flex-col gap-1 text-outline">
+<span class="text-[10px] font-medium pl-0.5">2</span>
+<span class="text-[9px] text-center pt-3 text-outline">Off-Duty</span>
+</div>
+<div class="min-h-[82px] p-1 rounded border border-outline-variant/20 bg-surface-container-low/40 flex flex-col gap-1 text-outline">
+<span class="text-[10px] font-medium pl-0.5">3</span>
+<span class="text-[9px] text-center pt-3 text-outline">On-Call</span>
+</div>
+<!-- Row 2: Nov 04 - Nov 10 -->
+<div class="min-h-[82px] p-1 rounded border border-outline-variant/30 bg-surface-container-lowest flex flex-col gap-1 cursor-pointer hover:border-primary/40 transition-colors">
+<div class="flex justify-between items-center px-0.5">
+<span class="text-[11px] font-bold text-on-surface">4</span>
+<span class="text-[9px] text-on-surface-variant">5 Appts</span>
+</div>
+<div class="p-1 rounded bg-primary/15 border-l-2 border-primary text-[9px] truncate font-medium text-on-surface">08:30 J. Miller</div>
+<div class="p-1 rounded bg-tertiary-container text-on-tertiary text-[9px] truncate font-medium">10:15 K. Adams</div>
+</div>
+<div class="min-h-[82px] p-1 rounded border border-outline-variant/30 bg-surface-container-lowest flex flex-col gap-1 cursor-pointer hover:border-primary/40 transition-colors">
+<div class="flex justify-between items-center px-0.5">
+<span class="text-[11px] font-bold text-on-surface">5</span>
+<span class="text-[9px] text-on-surface-variant">6 Appts</span>
+</div>
+<div class="p-1 rounded bg-primary/15 border-l-2 border-primary text-[9px] truncate font-medium text-on-surface">09:00 B. Wayne</div>
+<div class="p-1 rounded bg-primary/15 border-l-2 border-primary text-[9px] truncate font-medium text-on-surface">11:30 D. Prince</div>
+</div>
+<div class="min-h-[82px] p-1 rounded border border-outline-variant/30 bg-surface-container-lowest flex flex-col gap-1 cursor-pointer hover:border-primary/40 transition-colors">
+<div class="flex justify-between items-center px-0.5">
+<span class="text-[11px] font-bold text-on-surface">6</span>
+<span class="text-[9px] text-on-surface-variant">3 Appts</span>
+</div>
+<div class="p-1 rounded bg-surface-container-high/70 text-[9px] truncate text-on-surface-variant font-medium">13:00 Research</div>
+</div>
+<div class="min-h-[82px] p-1 rounded border border-outline-variant/30 bg-surface-container-lowest flex flex-col gap-1 cursor-pointer hover:border-primary/40 transition-colors">
+<div class="flex justify-between items-center px-0.5">
+<span class="text-[11px] font-bold text-on-surface">7</span>
+<span class="text-[9px] text-on-surface-variant">5 Appts</span>
+</div>
+<div class="p-1 rounded bg-primary/15 border-l-2 border-primary text-[9px] truncate font-medium text-on-surface">10:00 S. Rogers</div>
+<div class="p-1 rounded bg-tertiary-container text-on-tertiary text-[9px] truncate font-medium">14:30 C. Danvers</div>
+</div>
+<div class="min-h-[82px] p-1 rounded border border-outline-variant/30 bg-surface-container-lowest flex flex-col gap-1 cursor-pointer hover:border-primary/40 transition-colors">
+<div class="flex justify-between items-center px-0.5">
+<span class="text-[11px] font-bold text-on-surface">8</span>
+<span class="text-[9px] text-on-surface-variant">4 Appts</span>
+</div>
+<div class="p-1 rounded bg-primary/15 border-l-2 border-primary text-[9px] truncate font-medium text-on-surface">09:15 P. Parker</div>
+<div class="p-1 rounded bg-primary/15 border-l-2 border-primary text-[9px] truncate font-medium text-on-surface">13:00 N. Romanoff</div>
+</div>
+<div class="min-h-[82px] p-1 rounded border border-outline-variant/20 bg-surface-container-low/40 flex flex-col gap-1 text-outline">
+<span class="text-[10px] font-medium pl-0.5">9</span>
+<span class="text-[9px] text-center pt-3 text-outline">Off-Duty</span>
+</div>
+<div class="min-h-[82px] p-1 rounded border border-outline-variant/20 bg-surface-container-low/40 flex flex-col gap-1 text-outline">
+<span class="text-[10px] font-medium pl-0.5">10</span>
+<span class="text-[9px] text-center pt-3 text-outline">Off-Duty</span>
+</div>
+<!-- Row 3: Nov 11 - Nov 17 (Nov 12 is Selected Active Today) -->
+<div class="min-h-[82px] p-1 rounded border border-outline-variant/30 bg-surface-container-lowest flex flex-col gap-1 cursor-pointer hover:border-primary/40 transition-colors">
+<div class="flex justify-between items-center px-0.5">
+<span class="text-[11px] font-bold text-on-surface">11</span>
+<span class="text-[9px] text-on-surface-variant">5 Appts</span>
+</div>
+<div class="p-1 rounded bg-primary/15 border-l-2 border-primary text-[9px] truncate font-medium text-on-surface">08:30 M. Chen</div>
+<div class="p-1 rounded bg-primary/15 border-l-2 border-primary text-[9px] truncate font-medium text-on-surface">13:00 E. Rostova</div>
+</div>
+<!-- Nov 12 Selected Day -->
+<div class="min-h-[82px] p-1 rounded-lg border-2 border-primary bg-surface-container-low/70 flex flex-col gap-1 cursor-pointer shadow-xs">
+<div class="flex justify-between items-center px-0.5">
+<span class="text-[11px] font-bold px-1.5 py-0.2 rounded-full bg-primary text-on-primary">12</span>
+<span class="text-[9px] font-semibold text-primary">Today • 6</span>
+</div>
+<div class="p-1 rounded bg-primary text-on-primary text-[9px] truncate font-medium shadow-xs">10:30 Sarah Jenkins</div>
+<div class="p-1 rounded bg-tertiary-container text-on-tertiary text-[9px] truncate font-medium">13:15 David Ross</div>
+<span class="text-[9px] text-primary font-semibold pl-1">+4 more</span>
+</div>
+<div class="min-h-[82px] p-1 rounded border border-outline-variant/30 bg-surface-container-lowest flex flex-col gap-1 cursor-pointer hover:border-primary/40 transition-colors">
+<div class="flex justify-between items-center px-0.5">
+<span class="text-[11px] font-bold text-on-surface">13</span>
+<span class="text-[9px] text-on-surface-variant">4 Appts</span>
+</div>
+<div class="p-1 rounded bg-primary/15 border-l-2 border-primary text-[9px] truncate font-medium text-on-surface">10:00 J. Thorne</div>
+<div class="p-1 rounded bg-surface-container-high/70 text-[9px] truncate text-on-surface-variant font-medium">13:00 Research</div>
+</div>
+<div class="min-h-[82px] p-1 rounded border border-outline-variant/30 bg-surface-container-lowest flex flex-col gap-1 cursor-pointer hover:border-primary/40 transition-colors">
+<div class="flex justify-between items-center px-0.5">
+<span class="text-[11px] font-bold text-on-surface">14</span>
+<span class="text-[9px] text-on-surface-variant">5 Appts</span>
+</div>
+<div class="p-1 rounded bg-primary/15 border-l-2 border-primary text-[9px] truncate font-medium text-on-surface">08:45 Claire Wu</div>
+<div class="p-1 rounded bg-surface-container-high/70 text-[9px] truncate text-on-surface-variant font-medium">12:00 Grand Rounds</div>
+</div>
+<div class="min-h-[82px] p-1 rounded border border-outline-variant/30 bg-surface-container-lowest flex flex-col gap-1 cursor-pointer hover:border-primary/40 transition-colors">
+<div class="flex justify-between items-center px-0.5">
+<span class="text-[11px] font-bold text-on-surface">15</span>
+<span class="text-[9px] text-on-surface-variant">4 Appts</span>
+</div>
+<div class="p-1 rounded bg-primary/15 border-l-2 border-primary text-[9px] truncate font-medium text-on-surface">09:00 T. O'Connor</div>
+<div class="p-1 rounded bg-tertiary-container text-on-tertiary text-[9px] truncate font-medium">11:00 G. Hopper</div>
+</div>
+<div class="min-h-[82px] p-1 rounded border border-outline-variant/20 bg-surface-container-low/40 flex flex-col gap-1 text-outline">
+<span class="text-[10px] font-medium pl-0.5">16</span>
+<span class="text-[9px] text-center pt-3 text-outline">Off-Duty</span>
+</div>
+<div class="min-h-[82px] p-1 rounded border border-outline-variant/20 bg-surface-container-low/40 flex flex-col gap-1 text-outline">
+<span class="text-[10px] font-medium pl-0.5">17</span>
+<span class="text-[9px] text-center pt-3 text-outline">Off-Duty</span>
+</div>
+<!-- Row 4: Nov 18 - Nov 24 -->
+<div class="min-h-[82px] p-1 rounded border border-outline-variant/30 bg-surface-container-lowest flex flex-col gap-1 cursor-pointer hover:border-primary/40 transition-colors">
+<div class="flex justify-between items-center px-0.5">
+<span class="text-[11px] font-bold text-on-surface">18</span>
+<span class="text-[9px] text-on-surface-variant">5 Appts</span>
+</div>
+<div class="p-1 rounded bg-primary/15 border-l-2 border-primary text-[9px] truncate font-medium text-on-surface">09:00 H. Wells</div>
+<div class="p-1 rounded bg-tertiary-container text-on-tertiary text-[9px] truncate font-medium">11:30 C. Kent</div>
+</div>
+<div class="min-h-[82px] p-1 rounded border border-outline-variant/30 bg-surface-container-lowest flex flex-col gap-1 cursor-pointer hover:border-primary/40 transition-colors">
+<div class="flex justify-between items-center px-0.5">
+<span class="text-[11px] font-bold text-on-surface">19</span>
+<span class="text-[9px] text-on-surface-variant">4 Appts</span>
+</div>
+<div class="p-1 rounded bg-primary/15 border-l-2 border-primary text-[9px] truncate font-medium text-on-surface">10:15 L. Lane</div>
+<div class="p-1 rounded bg-primary/15 border-l-2 border-primary text-[9px] truncate font-medium text-on-surface">14:00 J. Stewart</div>
+</div>
+<div class="min-h-[82px] p-1 rounded border border-outline-variant/30 bg-surface-container-lowest flex flex-col gap-1 cursor-pointer hover:border-primary/40 transition-colors">
+<div class="flex justify-between items-center px-0.5">
+<span class="text-[11px] font-bold text-on-surface">20</span>
+<span class="text-[9px] text-on-surface-variant">3 Appts</span>
+</div>
+<div class="p-1 rounded bg-surface-container-high/70 text-[9px] truncate text-on-surface-variant font-medium">13:00 Research</div>
+</div>
+<div class="min-h-[82px] p-1 rounded border border-outline-variant/30 bg-surface-container-lowest flex flex-col gap-1 cursor-pointer hover:border-primary/40 transition-colors">
+<div class="flex justify-between items-center px-0.5">
+<span class="text-[11px] font-bold text-on-surface">21</span>
+<span class="text-[9px] text-on-surface-variant">6 Appts</span>
+</div>
+<div class="p-1 rounded bg-primary/15 border-l-2 border-primary text-[9px] truncate font-medium text-on-surface">08:30 W. West</div>
+<div class="p-1 rounded bg-tertiary-container text-on-tertiary text-[9px] truncate font-medium">15:00 A. Curry</div>
+</div>
+<div class="min-h-[82px] p-1 rounded border border-outline-variant/30 bg-surface-container-lowest flex flex-col gap-1 cursor-pointer hover:border-primary/40 transition-colors">
+<div class="flex justify-between items-center px-0.5">
+<span class="text-[11px] font-bold text-on-surface">22</span>
+<span class="text-[9px] text-on-surface-variant">4 Appts</span>
+</div>
+<div class="p-1 rounded bg-primary/15 border-l-2 border-primary text-[9px] truncate font-medium text-on-surface">09:30 V. Stone</div>
+<div class="p-1 rounded bg-primary/15 border-l-2 border-primary text-[9px] truncate font-medium text-on-surface">11:00 D. Hall</div>
+</div>
+<div class="min-h-[82px] p-1 rounded border border-outline-variant/20 bg-surface-container-low/40 flex flex-col gap-1 text-outline">
+<span class="text-[10px] font-medium pl-0.5">23</span>
+<span class="text-[9px] text-center pt-3 text-outline">Off-Duty</span>
+</div>
+<div class="min-h-[82px] p-1 rounded border border-outline-variant/20 bg-surface-container-low/40 flex flex-col gap-1 text-outline">
+<span class="text-[10px] font-medium pl-0.5">24</span>
+<span class="text-[9px] text-center pt-3 text-outline">Off-Duty</span>
+</div>
+<!-- Row 5: Nov 25 - Dec 01 -->
+<div class="min-h-[82px] p-1 rounded border border-outline-variant/30 bg-surface-container-lowest flex flex-col gap-1 cursor-pointer hover:border-primary/40 transition-colors">
+<div class="flex justify-between items-center px-0.5">
+<span class="text-[11px] font-bold text-on-surface">25</span>
+<span class="text-[9px] text-on-surface-variant">5 Appts</span>
+</div>
+<div class="p-1 rounded bg-primary/15 border-l-2 border-primary text-[9px] truncate font-medium text-on-surface">09:00 K. Kyle</div>
+<div class="p-1 rounded bg-tertiary-container text-on-tertiary text-[9px] truncate font-medium">13:30 O. Queen</div>
+</div>
+<div class="min-h-[82px] p-1 rounded border border-outline-variant/30 bg-surface-container-lowest flex flex-col gap-1 cursor-pointer hover:border-primary/40 transition-colors">
+<div class="flex justify-between items-center px-0.5">
+<span class="text-[11px] font-bold text-on-surface">26</span>
+<span class="text-[9px] text-on-surface-variant">4 Appts</span>
+</div>
+<div class="p-1 rounded bg-primary/15 border-l-2 border-primary text-[9px] truncate font-medium text-on-surface">10:00 S. Jordan</div>
+<div class="p-1 rounded bg-primary/15 border-l-2 border-primary text-[9px] truncate font-medium text-on-surface">14:30 Z. Zatara</div>
+</div>
+<div class="min-h-[82px] p-1 rounded border border-outline-variant/30 bg-surface-container-lowest flex flex-col gap-1 cursor-pointer hover:border-primary/40 transition-colors">
+<div class="flex justify-between items-center px-0.5">
+<span class="text-[11px] font-bold text-on-surface">27</span>
+<span class="text-[9px] text-on-surface-variant">3 Appts</span>
+</div>
+<div class="p-1 rounded bg-surface-container-high/70 text-[9px] truncate text-on-surface-variant font-medium">13:00 Research</div>
+</div>
+<div class="min-h-[82px] p-1 rounded border border-outline-variant/20 bg-surface-container-low/40 flex flex-col gap-1 text-on-surface-variant">
+<div class="flex justify-between items-center px-0.5">
+<span class="text-[11px] font-bold text-outline">28</span>
+<span class="text-[9px] text-error font-medium">Holiday</span>
+</div>
+<div class="p-1 rounded bg-surface-container-low text-[9px] text-center font-medium text-outline mt-2">Thanksgiving</div>
+</div>
+<div class="min-h-[82px] p-1 rounded border border-outline-variant/20 bg-surface-container-low/40 flex flex-col gap-1 text-on-surface-variant">
+<div class="flex justify-between items-center px-0.5">
+<span class="text-[11px] font-bold text-outline">29</span>
+<span class="text-[9px] text-error font-medium">Holiday</span>
+</div>
+<div class="p-1 rounded bg-surface-container-low text-[9px] text-center font-medium text-outline mt-2">Clinic Closed</div>
+</div>
+<div class="min-h-[82px] p-1 rounded border border-outline-variant/30 bg-surface-container-lowest flex flex-col gap-1 cursor-pointer hover:border-primary/40 transition-colors">
+<div class="flex justify-between items-center px-0.5">
+<span class="text-[11px] font-bold text-on-surface">30</span>
+<span class="text-[9px] text-on-surface-variant">2 Appts</span>
+</div>
+<div class="p-1 rounded bg-tertiary-container text-on-tertiary text-[9px] truncate font-medium">10:00 Urgent Video</div>
+</div>
+<div class="min-h-[82px] p-1 rounded border border-outline-variant/20 bg-surface-container-low/30 text-outline flex flex-col gap-1">
+<span class="text-[10px] font-medium pl-0.5">1</span>
+<div class="p-1 rounded bg-surface-container-low text-[9px] truncate opacity-60">Dec Preview</div>
+</div>
+</div>
+<!-- Month Footer Legend -->
+<div class="flex items-center justify-between pt-3 mt-3 border-t border-outline-variant/20 text-[11px] text-on-surface-variant">
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded bg-primary"></span>
+<span class="">In-Person Visit</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded bg-tertiary-container"></span>
+<span class="">Video / Telehealth</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded bg-surface-container-high"></span>
+<span class="">Academic / Research</span>
+</div>
+</div>
+<div class="flex items-center gap-1 text-xs text-primary font-medium cursor-pointer hover:underline">
+<span class="material-symbols-outlined text-[16px]">filter_list</span>
+<span class="">Filter Schedule</span>
+</div>
+</div></div>
+<!-- Compact Right Panel (Cols 4) -->
+<div class="xl:col-span-4 flex flex-col gap-space-md">
+<!-- Selected Appointment Details -->
+<div class="bg-surface-container-lowest rounded-lg border border-outline-variant/30 p-space-md flex flex-col gap-space-sm">
+<div class="flex items-center justify-between pb-2 border-b border-outline-variant/20">
+<span class="text-xs font-bold text-on-surface uppercase tracking-wider">Selected Day • Nov 12</span>
+<span class="text-[11px] font-medium text-primary bg-primary-fixed px-2 py-0.5 rounded" id="selectedTimeBadge">
+                  10:30 – 11:45 AM
+                </span>
+</div>
+<div class="flex flex-col gap-2 pt-1">
+<div>
+<h3 class="text-base font-bold text-on-surface" id="patientName">Sarah Jenkins</h3>
+<div class="flex items-center gap-2 text-xs text-on-surface-variant mt-0.5">
+<span class="" id="patientMRN">MRN-31024</span>
+<span class="">•</span>
+<span class="" id="patientContact">(555) 234-8901</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-2 mt-1">
+<div class="bg-surface-container-low p-2 rounded">
+<span class="text-[10px] uppercase font-semibold text-on-surface-variant block">Type</span>
+<span class="text-xs font-semibold text-on-surface" id="patientType">In-Person</span>
+</div>
+<div class="bg-surface-container-low p-2 rounded">
+<span class="text-[10px] uppercase font-semibold text-on-surface-variant block">Reason</span>
+<span class="text-xs font-semibold text-on-surface truncate" id="patientReason">Hypertension Review</span>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-col gap-1.5 pt-2">
+<button class="w-full h-9 rounded-lg bg-primary text-on-primary text-xs font-semibold flex items-center justify-center gap-1.5 hover:bg-primary-container transition-colors shadow-xs">
+<span class="material-symbols-outlined text-[16px]">folder_open</span>
+<span class="">Open Patient Chart</span>
+</button>
+<button class="w-full h-8 rounded-lg bg-surface-container-low text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high text-xs font-medium flex items-center justify-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-[16px]">event_busy</span>
+<span class="">Reschedule / Cancel</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Next Up Today (2-3 items) -->
+<div class="bg-surface-container-lowest rounded-lg border border-outline-variant/30 p-space-md flex flex-col gap-2.5">
+<span class="text-xs font-bold text-on-surface uppercase tracking-wider">Agenda • Tuesday, Nov 12</span>
+<div class="flex flex-col gap-2">
+<!-- Item 1 -->
+<div class="flex items-center justify-between p-2 rounded bg-surface-container-low/70 border border-outline-variant/20">
+<div class="flex flex-col">
+<span class="text-xs font-bold text-on-surface">David Ross</span>
+<span class="text-[11px] text-on-surface-variant">01:15 PM • Video Consult</span>
+</div>
+<span class="text-[10px] px-2 py-0.5 rounded bg-tertiary-container/15 text-tertiary font-semibold">Video</span>
+</div>
+<!-- Item 2 -->
+<div class="flex items-center justify-between p-2 rounded bg-surface-container-low/70 border border-outline-variant/20">
+<div class="flex flex-col">
+<span class="text-xs font-bold text-on-surface">Elena Rostova</span>
+<span class="text-[11px] text-on-surface-variant">02:45 PM • Pre-Surgical</span>
+</div>
+<span class="text-[10px] px-2 py-0.5 rounded bg-primary-fixed text-primary font-semibold">In-Person</span>
+</div>
+<!-- Item 3 -->
+<div class="flex items-center justify-between p-2 rounded bg-surface-container-low/70 border border-outline-variant/20">
+<div class="flex flex-col">
+<span class="text-xs font-bold text-on-surface">Marcus Chen</span>
+<span class="text-[11px] text-on-surface-variant">Completed (09:00 AM)</span>
+</div>
+<span class="text-[10px] px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-medium">Done</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<script>
+    function selectSlot(name, mrn, type, reason, time) {
+      document.getElementById('patientName').innerText = name;
+      document.getElementById('patientMRN').innerText = mrn;
+      document.getElementById('patientType').innerText = type;
+      document.getElementById('patientReason').innerText = reason;
+      document.getElementById('selectedTimeBadge').innerText = time;
+    }
+
+    // View switcher toggling
+    const viewButtons = ['btnDay', 'btnWeek', 'btnMonth'];
+    viewButtons.forEach(id => {
+      document.getElementById(id)?.addEventListener('click', function() {
+        viewButtons.forEach(b => {
+          const btn = document.getElementById(b);
+          btn.className = 'px-3 py-1 text-xs text-on-surface-variant hover:text-on-surface rounded font-medium transition-colors';
+        });
+        this.className = 'px-3 py-1 text-xs bg-surface-container-lowest text-primary font-semibold rounded shadow-xs transition-colors';
+      });
+    });
+  </script>
+
+
+</body></html>

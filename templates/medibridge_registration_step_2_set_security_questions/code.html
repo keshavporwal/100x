@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>MediBridge — Security Questions & Account Recovery Setup</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: "#004ac6",
+            "primary-container": "#2563eb",
+            "on-primary": "#ffffff",
+            surface: "#f8f9ff",
+            "surface-container": "#e5eeff",
+            "surface-container-low": "#eff4ff",
+            "surface-container-lowest": "#ffffff",
+            "on-surface": "#0b1c30",
+            "on-surface-variant": "#434655",
+            outline: "#737686",
+            "outline-variant": "#c3c6d7",
+            brand: {
+              50: '#f0f7ff',
+              100: '#e0effe',
+              500: '#0053db',
+              600: '#004ac6',
+              700: '#003ea8',
+              900: '#001b52',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    ::-webkit-scrollbar { display: none; }
+  </style>
+</head>
+<body class="bg-surface min-h-screen text-on-surface antialiased flex flex-col justify-between">
+
+  <!-- Ambient background glow -->
+  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+    <div class="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-primary/10 blur-3xl"></div>
+    <div class="absolute -bottom-40 -left-40 w-96 h-96 rounded-full bg-brand-500/10 blur-3xl"></div>
+  </div>
+
+  <!-- Header minimal bar -->
+  <header class="relative z-10 w-full px-6 py-4 flex items-center justify-between border-b border-outline-variant/30 bg-surface-container-lowest/80 backdrop-blur-md">
+    <div class="flex items-center space-x-3">
+      <div class="w-9 h-9 rounded-xl bg-primary flex items-center justify-center text-white shadow-sm">
+        <span class="material-symbols-outlined text-[22px]">health_and_safety</span>
+      </div>
+      <div>
+        <span class="font-bold text-base tracking-tight text-slate-900 block leading-tight">MediBridge</span>
+        <span class="text-[11px] text-slate-500 font-medium">Unified Clinical Platform</span>
+      </div>
+    </div>
+
+    <!-- Stepper indicator -->
+    <div class="hidden sm:flex items-center space-x-2 text-xs font-semibold">
+      <div class="flex items-center text-emerald-600 space-x-1.5">
+        <span class="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center text-[12px] font-bold">✓</span>
+        <span>Account Created</span>
+      </div>
+      <span class="text-slate-300">———</span>
+      <div class="flex items-center text-primary space-x-1.5">
+        <span class="w-5 h-5 rounded-full bg-primary text-white flex items-center justify-center text-[11px] font-bold">2</span>
+        <span>Security Recovery</span>
+      </div>
+      <span class="text-slate-300">———</span>
+      <div class="flex items-center text-slate-400 space-x-1.5">
+        <span class="w-5 h-5 rounded-full bg-slate-100 flex items-center justify-center text-[11px] font-bold text-slate-400">3</span>
+        <span>Platform Access</span>
+      </div>
+    </div>
+
+    <a href="#" class="text-xs font-medium text-slate-600 hover:text-primary transition flex items-center gap-1">
+      <span class="material-symbols-outlined text-sm">arrow_back</span>
+      <span>Back to Register</span>
+    </a>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="relative z-10 flex-1 flex items-center justify-center px-4 py-10">
+    <div class="w-full max-w-2xl bg-surface-container-lowest rounded-2xl border border-outline-variant/40 shadow-xl p-6 sm:p-10 space-y-8">
+
+      <!-- Top Title & Badge -->
+      <div class="space-y-2 text-center sm:text-left border-b border-slate-100 pb-6">
+        <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold tracking-wide uppercase mb-1">
+          <span class="material-symbols-outlined text-[15px]">lock_reset</span>
+          <span>Step 2 of 2: Password Recovery Protocol</span>
+        </div>
+        <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">Set 3 Security Questions</h1>
+        <p class="text-sm text-slate-600 leading-relaxed max-w-xl">
+          To protect sensitive healthcare records and verify your identity if you ever lose access to your email or forget your password, configure 3 security questions below.
+        </p>
+      </div>
+
+      <!-- Account Details Confirmation Chip -->
+      <div class="bg-surface-container-low/70 border border-slate-200/80 rounded-xl p-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+        <div class="flex items-center space-x-3">
+          <div class="w-8 h-8 rounded-full bg-primary-container text-white flex items-center justify-center font-bold text-sm">
+            MC
+          </div>
+          <div>
+            <span class="font-semibold text-slate-800 block text-xs">Enrolling Account:</span>
+            <span class="text-slate-600 font-mono text-[11px]">dr.marcus.chen@stjude-operations.org</span>
+          </div>
+        </div>
+        <div class="flex items-center space-x-2">
+          <span class="inline-flex items-center px-2 py-0.5 rounded-full bg-blue-100 text-primary font-semibold text-[11px]">
+            Doctor / Clinician
+          </span>
+          <span class="inline-flex items-center px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 font-semibold text-[11px]">
+            Active SSO
+          </span>
+        </div>
+      </div>
+
+      <!-- Form for 3 Security Questions -->
+      <form id="sec-questions-form" class="space-y-6" onsubmit="event.preventDefault(); triggerFinishEnrollment();">
+
+        <!-- Question 1 -->
+        <div class="space-y-2 bg-slate-50/60 p-4 rounded-xl border border-slate-200/60 transition hover:border-primary/30">
+          <div class="flex items-center justify-between">
+            <label for="q1-select" class="text-xs font-bold uppercase tracking-wider text-slate-700 flex items-center gap-1.5">
+              <span class="w-4 h-4 rounded-full bg-primary text-white flex items-center justify-center text-[10px]">1</span>
+              <span>Primary Security Question</span>
+            </label>
+            <span class="text-[11px] text-error font-medium">* Required</span>
+          </div>
+          <div class="relative">
+            <select id="q1-select" required class="w-full px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition appearance-none cursor-pointer pr-10 font-medium">
+              <option value="">Select your first security question...</option>
+              <option selected value="q1_1">What was the name of your first elementary or grade school?</option>
+              <option value="q1_2">In what city was your first residency, rotation, or internship?</option>
+              <option value="q1_3">What was your maternal grandmother's maiden surname?</option>
+              <option value="q1_4">What was the model and color of your first motor vehicle?</option>
+              <option value="q1_5">What was the official name of your first childhood pet?</option>
+            </select>
+            <span class="material-symbols-outlined text-slate-400 absolute right-3 top-2.5 pointer-events-none text-xl">expand_more</span>
+          </div>
+          <div>
+            <input type="text" id="q1-answer" required placeholder="Type your confidential answer..." class="w-full px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition"/>
+          </div>
+          <p class="text-[11px] text-slate-400 italic">Answers are encrypted and case-insensitive during account recovery.</p>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="space-y-2 bg-slate-50/60 p-4 rounded-xl border border-slate-200/60 transition hover:border-primary/30">
+          <div class="flex items-center justify-between">
+            <label for="q2-select" class="text-xs font-bold uppercase tracking-wider text-slate-700 flex items-center gap-1.5">
+              <span class="w-4 h-4 rounded-full bg-primary text-white flex items-center justify-center text-[10px]">2</span>
+              <span>Secondary Security Question</span>
+            </label>
+            <span class="text-[11px] text-error font-medium">* Required</span>
+          </div>
+          <div class="relative">
+            <select id="q2-select" required class="w-full px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition appearance-none cursor-pointer pr-10 font-medium">
+              <option value="">Select your second security question...</option>
+              <option value="q2_1">In what city or municipality did your parents first meet?</option>
+              <option selected value="q2_2">What was your first job title or clinical department position?</option>
+              <option value="q2_3">What was the name of the hospital where you were born?</option>
+              <option value="q2_4">What was the street name of the first residence you remember?</option>
+              <option value="q2_5">What is the middle name of your oldest sibling or mentor?</option>
+            </select>
+            <span class="material-symbols-outlined text-slate-400 absolute right-3 top-2.5 pointer-events-none text-xl">expand_more</span>
+          </div>
+          <div>
+            <input type="text" id="q2-answer" required placeholder="Type your confidential answer..." class="w-full px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition"/>
+          </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="space-y-2 bg-slate-50/60 p-4 rounded-xl border border-slate-200/60 transition hover:border-primary/30">
+          <div class="flex items-center justify-between">
+            <label for="q3-select" class="text-xs font-bold uppercase tracking-wider text-slate-700 flex items-center gap-1.5">
+              <span class="w-4 h-4 rounded-full bg-primary text-white flex items-center justify-center text-[10px]">3</span>
+              <span>Third Verification Question</span>
+            </label>
+            <span class="text-[11px] text-error font-medium">* Required</span>
+          </div>
+          <div class="relative">
+            <select id="q3-select" required class="w-full px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition appearance-none cursor-pointer pr-10 font-medium">
+              <option value="">Select your third security question...</option>
+              <option value="q3_1">What is the title of your favorite medical text or seminal publication?</option>
+              <option value="q3_2">In what city did you attend your first national healthcare symposium?</option>
+              <option selected value="q3_3">What was the full name of your favorite grade school teacher?</option>
+              <option value="q3_4">What was the code or name of your first college dormitory?</option>
+              <option value="q3_5">What was your childhood dream aspiration or profession?</option>
+            </select>
+            <span class="material-symbols-outlined text-slate-400 absolute right-3 top-2.5 pointer-events-none text-xl">expand_more</span>
+          </div>
+          <div>
+            <input type="text" id="q3-answer" required placeholder="Type your confidential answer..." class="w-full px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition"/>
+          </div>
+        </div>
+
+        <!-- Security & Privacy Reassurance Notice -->
+        <div class="p-4 rounded-xl bg-blue-50/60 border border-blue-100 flex items-start gap-3">
+          <span class="material-symbols-outlined text-primary text-xl mt-0.5">verified_user</span>
+          <div class="text-xs text-slate-700 space-y-1">
+            <span class="font-bold text-slate-900 block">End-to-End Cryptographic Protection</span>
+            <p class="leading-relaxed text-slate-600">
+              Security responses are hashed with SHA-256 and salted before saving. MediBridge administrators cannot inspect or read your raw answers.
+            </p>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="flex flex-col-reverse sm:flex-row sm:items-center justify-between gap-3 pt-2">
+          <button type="button" onclick="window.history.back()" class="px-5 py-2.5 rounded-xl border border-slate-200 text-slate-700 hover:bg-slate-50 font-semibold text-xs sm:text-sm transition flex items-center justify-center gap-1.5">
+            <span class="material-symbols-outlined text-base">arrow_back</span>
+            <span>Return to Step 1</span>
+          </button>
+
+          <button type="submit" id="submit-security-btn" class="px-7 py-3 bg-primary hover:bg-brand-700 text-white rounded-xl font-semibold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all flex items-center justify-center space-x-2">
+            <span>Save Recovery Setup & Enter Workspace</span>
+            <span class="material-symbols-outlined text-base">arrow_forward</span>
+          </button>
+        </div>
+      </form>
+
+      <!-- Success confirmation banner (hidden by default) -->
+      <div id="enrollment-success" class="hidden p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-900 text-xs flex items-center gap-3">
+        <span class="material-symbols-outlined text-emerald-600 text-2xl">check_circle</span>
+        <div>
+          <span class="font-bold text-sm block">Account Setup & Security Questions Saved!</span>
+          <span>Redirecting to your role-based clinical workspace...</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="relative z-10 py-4 px-6 text-center text-xs text-slate-400 border-t border-outline-variant/30 bg-surface-container-lowest/60">
+    <div class="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+        <span>MediBridge Identity Authority • 256-Bit Hardware Encryption</span>
+      </div>
+      <span>MediBridge Clinical OS v4.8 • SOC-2 & HIPAA Compliant</span>
+    </div>
+  </footer>
+
+  <script>
+    function triggerFinishEnrollment() {
+      const btn = document.getElementById('submit-security-btn');
+      const successBox = document.getElementById('enrollment-success');
+      btn.disabled = true;
+      btn.innerHTML = '<span class="material-symbols-outlined animate-spin text-base">sync</span><span>Saving Security Configuration...</span>';
+
+      setTimeout(() => {
+        btn.classList.add('hidden');
+        successBox.classList.remove('hidden');
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
